@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Altask.www.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EventLogSource" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Altask</Value>
+    </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AlertEmailFrom" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Altask &lt;noreply@altask.altek.com&gt;</Value>
+    </Setting>
+    <Setting Name="AlertEmailSubject" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Altask Alert</Value>
+    </Setting>
+    <Setting Name="TaskAlertServiceOffsetPast" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-7</Value>
+    </Setting>
+    <Setting Name="TaskAlertServiceOffsetFuture" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="OccurrenceServiceThrottle" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="TaskAlertServiceThrottle" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="OccurrenceServiceActive" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TaskAlertServiceActive" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OccurrenceServiceOffset" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-4</Value>
+    </Setting>
+    <Setting Name="AssetAlertServiceActive" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AssetAlertServiceThrottle" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

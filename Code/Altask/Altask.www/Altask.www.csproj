@@ -1,0 +1,1179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C0A9A28-4732-463E-997C-46A57FC891ED}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Altask.www</RootNamespace>
+    <AssemblyName>Altask.www</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\Global\entities.services.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\AdAuthenticationService.cs" />
+    <Compile Include="App_Start\ApplicationDbContext.cs" />
+    <Compile Include="App_Start\ApplicationSignInManager.cs" />
+    <Compile Include="App_Start\ApplicationUserManager.cs" />
+    <Compile Include="App_Start\AssetAlertService.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DefaultAuthenticationTypes.cs" />
+    <Compile Include="App_Start\EmailService.cs" />
+    <Compile Include="App_Start\Extensions.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\SignalRAsset.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetAlert.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetAlertLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetAlertUser.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetGroup.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetGrouping.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetLogResolution.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetLogType.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetLogTypeAsset.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetLogTypeCategory.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRAssetType.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRDepartment.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalREntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRForm.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRFormLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRHub.cs" />
+    <Compile Include="App_Start\SignalRManufacturer.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalROccurrence.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalROccurrenceLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRRole.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRSchedule.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRScheduleAsset.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRScheduleAssetType.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRScheduleLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRScheduleUser.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRScheduleUserType.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRTask.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRTaskAlert.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRTaskAlertLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRTaskAlertUser.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRTaskCategory.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRTaskType.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRUser.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRUserLog.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\SignalRUserRole.cs">
+      <DependentUpon>SignalREntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\TaskAlertService.cs" />
+    <Compile Include="App_Start\OccurrenceService.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Service.cs" />
+    <Compile Include="App_Start\ServiceNameAttribute.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AssetAlertController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetAlertLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetAlertServiceController.cs" />
+    <Compile Include="Controllers\AssetAlertUserController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetGroupController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetGroupingController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetLogResolutionController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetLogTypeAssetController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetLogTypeCategoryController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetLogTypeController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetTypeController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EntityControllers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FormController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FormLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ManufacturerController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OccurrenceController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OccurrenceLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OccurrenceServiceController.cs" />
+    <Compile Include="Controllers\Partials\AssetAlertController.cs" />
+    <Compile Include="Controllers\Partials\AssetAllertLogController.cs" />
+    <Compile Include="Controllers\Partials\AssetController.cs" />
+    <Compile Include="Controllers\Partials\AssetLogController.cs" />
+    <Compile Include="Controllers\Partials\AssetLogTypeController.cs" />
+    <Compile Include="Controllers\Partials\TaskAlertController.cs" />
+    <Compile Include="Controllers\Partials\FormController.cs" />
+    <Compile Include="Controllers\Partials\OccurrenceController.cs" />
+    <Compile Include="Controllers\Partials\ScheduleController.cs" />
+    <Compile Include="Controllers\Partials\TaskController.cs" />
+    <Compile Include="Controllers\Partials\UserController.cs" />
+    <Compile Include="Controllers\RoleController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScheduleAssetController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScheduleAssetTypeController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScheduleController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScheduleLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScheduleUserController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ScheduleUserTypeController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SettingController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TaskAlertController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TaskAlertLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TaskAlertServiceController.cs" />
+    <Compile Include="Controllers\TaskAlertUserController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TaskCategoryController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TaskController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\TaskTypeController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\UserController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\UserLogController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\UserRoleController.cs">
+      <DependentUpon>EntityControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AssetAlertListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetAlertLogListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetAlertUserListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetGroupingListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetGroupListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetLogListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetLogResolutionListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetLogTypeCategoryListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetLogTypeListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetTypeListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DepartmentListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityListOptions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListOptions.cs" />
+    <Compile Include="Models\ManufacturerListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OccurrenceListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OneTimeOccurrence.cs" />
+    <Compile Include="Models\Partials\AssetAlertLogListOptions.cs" />
+    <Compile Include="Models\PredicateBuilder.cs" />
+    <Compile Include="Models\ScheduleAssetListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScheduleAssetTypeListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScheduleListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScheduleUserListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScheduleUserTypeListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServicesModels.cs" />
+    <Compile Include="Models\TaskAlertListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskAlertLogListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskAlertUserListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskCategoryListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskInstance.cs" />
+    <Compile Include="Models\TaskListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectToOptions.cs" />
+    <Compile Include="Models\TaskTypeListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserLogListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRoleListOptions.cs">
+      <DependentUpon>EntityListOptions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\FormBuilder\components\formBuilder\compileHtml.directive.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.template.html" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.controller.helpers.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.controller.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.directive.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.module.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.provider.helpers.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\formBuilder.provider.js" />
+    <Content Include="App\FormBuilder\components\formBuilder\jsconfig.json" />
+    <Content Include="App\FormBuilder\components\common\dragAndDropList\dragAndDropList.dndDraggable.directive.js" />
+    <Content Include="App\FormBuilder\components\common\dragAndDropList\dragAndDropList.dndlist.directive.js" />
+    <Content Include="App\FormBuilder\components\common\dragAndDropList\dragAndDropList.module.js" />
+    <Content Include="App\FormBuilder\components\common\edaTrustThisFilter\trustThis.filter.js" />
+    <Content Include="App\FormBuilder\components\common\edaTrustThisFilter\trustThis.module.js" />
+    <Content Include="App\FormBuilder\components\common\pageslide\pageslide.directive.js" />
+    <Content Include="App\FormBuilder\components\common\pageslide\pageslide.module.js" />
+    <Content Include="App\FormBuilder\components\configurationModelProxy\configurationModelProxy.module.js" />
+    <Content Include="App\FormBuilder\components\configurationModelProxy\configurationModelProxy.service.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddContentCounter\dragdrop.ddContentCounter.directive.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddContentCounter\dragdrop.ddContentCounter.service.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorContainer\dragdrop.ddDecorContainer.controller.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorContainer\dragdrop.ddDecorContainer.directive.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorContainer\dragdrop.ddDecorContainer.template.html" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorDropZone\dragdrop.ddDecorDropZone.directive.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorDropZone\dragdrop.ddDecorDropZone.template.html" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorItem\dragdrop.ddDecorItem.directive.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorItem\dragdrop.ddDecorItem.service.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorItem\dragdrop.ddDecorItem.template.html" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorLine\dragdrop.ddDecorLine.directive.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddDecorLine\dragdrop.ddDecorLine.template.html" />
+    <Content Include="App\FormBuilder\components\dragdrop\ddNoEditableControl\dragdrop.ddNoEditableControl.directive.js" />
+    <Content Include="App\FormBuilder\components\dragdrop\dragdrop.module.js" />
+    <Content Include="App\FormBuilder\components\formlyProxy\formlyProxy.module.js" />
+    <Content Include="App\FormBuilder\components\formlyProxy\formlyProxy.provider.helpers.js" />
+    <Content Include="App\FormBuilder\components\formlyProxy\formlyProxy.provider.js" />
+    <Content Include="App\FormBuilder\components\formlyProxy\formlyProxy.service.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\BasicSelectControl\leftpanel.basicSelectControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\BasicSelectControl\leftpanel.basicSelectControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\BlankControl\leftpanel.blankControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\BlankControl\leftpanel.blankControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\CheckBoxControl\leftpanel.checkBoxControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\CheckBoxControl\leftpanel.checkBoxControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\DateControl\leftpanel.dateControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\DateControl\leftpanel.dateControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\GroupedSelectControl\leftpanel.groupedSelectControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\GroupedSelectControl\leftpanel.groupedSelectControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\HeaderControl\leftpanel.headerControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\HeaderControl\leftpanel.headerControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\HeaderControl\leftpanel.headerH4Control.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\HeaderControl\leftpanel.headerH5Control.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\HtmlControl\leftpanel.htmlControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\HtmlControl\leftpanel.htmlControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.controller.helpers.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.controller.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.service.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.module.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.selectOptionManage.service.helpers.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.selectOptionManage.service.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\leftPanel.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\NumberInputControl\leftpanel.numberInputControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\NumberInputControl\leftpanel.numberInputControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\PasswordControl\leftpanel.passwordControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\PasswordControl\leftpanel.passwordControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\RadioControl\leftpanel.radioControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\RadioControl\leftpanel.radioControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\RichTextEditorControl\leftpanel.richTextEditorControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\RichTextEditorControl\leftpanel.richTextEditorControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\SubTitleControl\leftpanel.subtitleControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\SubTitleControl\leftpanel.subtitleControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\TextAreaControl\leftpanel.textareaControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\TextAreaControl\leftpanel.textareaControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\TextInputControl\leftpanel.textInputControl.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\TextInputControl\leftpanel.textInputControl.template.html" />
+    <Content Include="App\FormBuilder\components\leftPanel\ValidEditFooter\leftpanel.validEditFooter.directive.js" />
+    <Content Include="App\FormBuilder\components\leftPanel\ValidEditFooter\leftpanel.validEditFooter.template.html" />
+    <Content Include="App\FormBuilder\config\dragDropConfig.config.js" />
+    <Content Include="App\FormBuilder\config\formlyConfig.config.js" />
+    <Content Include="App\FormBuilder\core\core.module.js" />
+    <Content Include="App\FormBuilder\index.js" />
+    <Content Include="App\FormBuilder\main.js" />
+    <Content Include="App\FormBuilder\style\drag_and_drop.scss" />
+    <Content Include="App\FormBuilder\style\drag_and_drop_mixins.scss" />
+    <Content Include="App\FormBuilder\style\drag_and_drop_var.scss" />
+    <Content Include="App\FormBuilder\style\eda.textAngular.min.scss" />
+    <Content Include="App\FormBuilder\vendors.js" />
+    <Content Include="App\Global\asset.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetAlert.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetAlertLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetAlertUser.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetGroup.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetGrouping.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetLogResolution.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetLogType.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetLogTypeAsset.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetLogTypeCategory.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\assetType.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\department.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\dialog.service.js" />
+    <Content Include="App\Global\formLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\manufacturer.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\occurrence.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\occurrenceLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\Partials\form.service.js" />
+    <Content Include="App\Global\Partials\occurrence.service.js" />
+    <Content Include="App\Global\Partials\schedule.service.js" />
+    <Content Include="App\Global\Partials\user.service.js" />
+    <Content Include="App\Global\role.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\schedule.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\scheduleAsset.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\scheduleAssetType.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\scheduleLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\scheduleUser.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\scheduleUserType.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\setting.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\signalR.service.js" />
+    <Content Include="App\Global\taskAlert.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\taskAlertLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\taskAlertUser.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\taskCategory.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\user.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\userLog.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\userRole.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Main\Asset\assetGroups.component.js" />
+    <Content Include="App\Main\Asset\assetLogTypeCategories.component.js" />
+    <Content Include="App\Main\Asset\assetLogTypes.component.js" />
+    <Content Include="App\Main\Asset\assets.component.js" />
+    <Content Include="App\Main\Asset\assetTypes.component.js" />
+    <Content Include="App\Main\Directives\datepicker.directive.js" />
+    <Content Include="App\Main\Directives\mustMatch.directive.js" />
+    <Content Include="App\Main\Directives\pageLoading.directive.js" />
+    <Content Include="App\Main\Directives\reqData.directive.js" />
+    <Content Include="App\Main\Directives\schedule.directive.js" />
+    <Content Include="App\Main\Directives\unqName.directive.js" />
+    <Content Include="App\Main\Directives\resizable.directive.js" />
+    <Content Include="App\Main\Form\forms.component.js" />
+    <Content Include="App\Main\System\departments.component.js" />
+    <Content Include="App\Main\System\manufacturers.component.js" />
+    <Content Include="App\Main\System\servicesPanel.component.js" />
+    <Content Include="App\Main\Task\tasks.component.js" />
+    <Content Include="App\Main\Task\taskCategories.component.js" />
+    <Content Include="App\Main\User\users.component.js" />
+    <Content Include="App_Start\SignalREntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SignalREntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Bundles\app.js" />
+    <Content Include="Bundles\vendor.js" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="favicon.ico" />
+    <Content Include="App\Bootstrap\bootstrap.js" />
+    <Content Include="App\Bootstrap\ngmodule.js" />
+    <Content Include="App\Global\appConfig.service.js" />
+    <Content Include="App\Global\auth.service.js" />
+    <Content Include="App\Global\comm.service.js" />
+    <Content Include="App\Global\crud.service.js" />
+    <Content Include="App\Global\global.module.js" />
+    <Content Include="App\Global\logger.service.js" />
+    <Content Include="App\Global\requiresAuth.hook.js" />
+    <Content Include="App\Main\app.component.js" />
+    <Content Include="App\Main\app.states.js" />
+    <Content Include="App\Main\home.component.js" />
+    <Content Include="App\Main\Account\login.component.js" />
+    <Content Include="App\Main\main.module.js" />
+    <Content Include="App\Utility\sessionStorage.js" />
+    <Content Include="App\Utility\utility.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Controllers\EntityControllers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityControllers.cs</LastGenOutput>
+    </Content>
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\Altask.ico" />
+    <Content Include="Images\altask_brand.png" />
+    <Content Include="Images\altask_logo.png" />
+    <Content Include="Images\altask_logo_184pxX45px.png" />
+    <Content Include="Images\loading-white.gif" />
+    <Content Include="index.html" />
+    <Content Include="Models\EntityListOptions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityListOptions.cs</LastGenOutput>
+    </Content>
+    <Content Include="node_modules\angular-ui-bootstrap\dist\ui-bootstrap-tpls.js" />
+    <Content Include="node_modules\angular-ui-bootstrap\template\tabs\tab.html" />
+    <Content Include="node_modules\angular-ui-layout\src\ui-layout.css" />
+    <Content Include="node_modules\angular-ui-layout\src\ui-layout.js" />
+    <Content Include="node_modules\bootbox\bootbox.js" />
+    <Content Include="package.json" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Views\Account\login.html" />
+    <Content Include="Views\App\app.html" />
+    <Content Include="Views\App\home.html" />
+    <Content Include="Views\Asset\assets.html" />
+    <Content Include="Views\Asset\groups.html" />
+    <Content Include="Views\Asset\logTypeCategories.html" />
+    <Content Include="Views\Asset\logTypes.html" />
+    <Content Include="Views\Asset\types.html" />
+    <Content Include="Views\Form\forms.html" />
+    <Content Include="Views\System\departments.html" />
+    <Content Include="Views\System\manufacturers.html" />
+    <Content Include="Views\System\servicesPanel.html" />
+    <Content Include="Views\Task\tasks.html" />
+    <Content Include="Views\Task\categories.html" />
+    <Content Include="Views\User\users.html" />
+    <Content Include="webpack.config.js" />
+    <Content Include="Content\DataTables\css\semanticui.scss" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Bundles\app.js.map" />
+    <Content Include="Bundles\vendor.js.map" />
+    <None Include="Properties\PublishProfiles\Folder.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="App\Global\entities.services.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>entities.services.cs</LastGenOutput>
+    </Content>
+    <Content Include="App\Global\form.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="App\Global\task.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="App\Global\taskType.service.js">
+      <DependentUpon>entities.services.tt</DependentUpon>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AssetAllertLog\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Altask.Data\Altask.Data.csproj">
+      <Project>{eb44db42-efeb-420b-a2e3-03b8035feb30}</Project>
+      <Name>Altask.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55855</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:644</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d30d594849b9440e8d918b661ecca84f" Name="Diagram1">
+        <EntityTypeShape EntityType="Altask.Data.Model.Asset" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetAlert" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetAlertLog" Width="1.5" PointX="13.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetAlertUser" Width="1.5" PointX="10.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetGroup" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetGrouping" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetLog" Width="1.5" PointX="8.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetLogResolution" Width="1.5" PointX="10.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetLogType" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetLogTypeAsset" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetLogTypeCategory" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.AssetType" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Department" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Form" Width="1.5" PointX="1.5" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.FormLog" Width="1.5" PointX="3.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Manufacturer" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Occurrence" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.OccurrenceLog" Width="1.5" PointX="7.5" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Role" Width="1.5" PointX="14.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Schedule" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.ScheduleAsset" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.ScheduleAssetType" Width="1.5" PointX="6" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.ScheduleLog" Width="1.5" PointX="5.25" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.ScheduleUser" Width="1.5" PointX="13.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.ScheduleUserType" Width="1.5" PointX="11.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Task" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.TaskAlert" Width="1.5" PointX="3" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.TaskAlertLog" Width="1.5" PointX="16.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.TaskAlertUser" Width="1.5" PointX="13.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.TaskCategory" Width="1.5" PointX="1.5" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.TaskType" Width="1.5" PointX="1.5" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.User" Width="1.5" PointX="11.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.UserLog" Width="1.5" PointX="13.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Altask.Data.Model.UserRole" Width="1.5" PointX="16.5" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Asset_AssetType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Asset_Department_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Asset_Manufacturer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlert_Asset_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetGrouping_Asset_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLog_Asset_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLogTypeAsset_Asset_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Occurrence_Asset_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleAsset_Asset_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlert_AssetLogType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlertLog_AssetAlert_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlertUser_AssetAlert_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlertLog_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlertUser_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetGrouping_AssetGroup_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLog_AssetLogType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLogResolution_AssetLog_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLogResolution_Occurrence_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLogResolution_Task_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLogType_AssetLogTypeCategory_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetLogTypeAsset_AssetLogType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_FormLog_Form_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Task_Form" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Occurrence_Schedule_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Occurrence_Task_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Occurrence_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_OccurrenceLog_Occurrence_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_UserRole_Role_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Schedule_Task_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleAsset_Schedule_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleLog_Schedule_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleUser_Schedule_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleAsset_ScheduleAssetType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleUser_ScheduleUserType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_ScheduleUser_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Task_TaskCategory_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_Task_TaskType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_TaskAlert_Task_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_TaskAlertLog_TaskAlert_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_TaskAlertUser_TaskAlert_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_TaskAlertLog_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_TaskAlertUser_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_UserLog_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_UserRole_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Altask.Data.Model.FK_AssetAlertLog_AssetLog_Id" />
+        <EntityTypeShape EntityType="Altask.Data.Model.Setting" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Altask.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="AssetTypeId" Type="int" Nullable="false" />
+    <Property Name="CustomId" Type="varchar" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="DepartmentId" Type="int" />
+    <Property Name="ManufacturerId" Type="int" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Serial" Type="varchar" MaxLength="50" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetAlert">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="AssetId" Type="int" Nullable="false" />
+    <Property Name="AssetLogTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetAlertLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetAlertId" Type="bigint" Nullable="false" />
+    <Property Name="AssetLogId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="1000" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="AlertDate" Type="datetime2" Precision="7" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetAlertUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetAlertId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetGrouping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetId" Type="int" Nullable="false" />
+    <Property Name="AssetGroupId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetId" Type="int" Nullable="false" />
+    <Property Name="AssetLogTypeId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="1000" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetLogResolution">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetLogId" Type="bigint" Nullable="false" />
+    <Property Name="TaskId" Type="bigint" Nullable="false" />
+    <Property Name="OccurrenceId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetLogType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetLogTypeCategoryId" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CanComment" Type="bit" Nullable="false" />
+    <Property Name="CanResolve" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetLogTypeAsset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AssetId" Type="int" Nullable="false" />
+    <Property Name="AssetLogTypeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetLogTypeCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="DraftModel" Type="varchar(max)" />
+    <Property Name="PublishedModel" Type="varchar(max)" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="Version" Type="varchar" MaxLength="20" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="BeforeModel" Type="varchar(max)" />
+    <Property Name="BeforeVersion" Type="varchar" MaxLength="20" />
+    <Property Name="AfterModel" Type="varchar(max)" />
+    <Property Name="AfterVersion" Type="varchar" MaxLength="20" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Occurrence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskId" Type="bigint" Nullable="false" />
+    <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+    <Property Name="AssetId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="FormModel" Type="varchar(max)" Nullable="false" />
+    <Property Name="XmlResults" Type="xml" />
+    <Property Name="AsEarlyAsDate" Type="datetime2" Precision="7" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Dismissed" Type="bit" />
+    <Property Name="DismissedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DismissedOn" Type="datetime2" Precision="7" />
+    <Property Name="Started" Type="bit" />
+    <Property Name="StartedBy" Type="varchar" MaxLength="50" />
+    <Property Name="StartedOn" Type="datetime2" Precision="7" />
+    <Property Name="StoppedBy" Type="varchar" MaxLength="50" />
+    <Property Name="StoppedOn" Type="datetime2" Precision="7" />
+    <Property Name="ResumedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ResumedOn" Type="datetime2" Precision="7" />
+    <Property Name="Completed" Type="bit" />
+    <Property Name="CompletedBy" Type="varchar" MaxLength="50" />
+    <Property Name="CompletedOn" Type="datetime2" Precision="7" />
+    <Property Name="TimeSpent" Type="int" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OccurrenceLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OccurrenceId" Type="bigint" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="JsonModel" Type="varchar(max)" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="TaskId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Frequency" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EndsAfter" Type="int" />
+    <Property Name="EndsOn" Type="date" />
+    <Property Name="EveryN" Type="int" />
+    <Property Name="OnWeek" Type="int" />
+    <Property Name="AnyTime" Type="bit" />
+    <Property Name="AsEarlyAsN" Type="int" />
+    <Property Name="AsEarlyAsFrequency" Type="varchar" MaxLength="20" />
+    <Property Name="OnMonday" Type="bit" Nullable="false" />
+    <Property Name="OnTuesday" Type="bit" Nullable="false" />
+    <Property Name="OnWednesday" Type="bit" Nullable="false" />
+    <Property Name="OnThursday" Type="bit" Nullable="false" />
+    <Property Name="OnFriday" Type="bit" Nullable="false" />
+    <Property Name="OnSaturday" Type="bit" Nullable="false" />
+    <Property Name="OnSunday" Type="bit" Nullable="false" />
+    <Property Name="StartsOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleAsset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+    <Property Name="AssetId" Type="int" Nullable="false" />
+    <Property Name="ScheduleAssetTypeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleAssetType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="SnapShot" Type="xml" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ScheduleUserTypeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleUserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Area" Type="varchar" MaxLength="100" />
+    <Property Name="Classification" Type="varchar" MaxLength="100" />
+    <Property Name="Value" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="TaskTypeId" Type="int" Nullable="false" />
+    <Property Name="TaskCategoryId" Type="int" Nullable="false" />
+    <Property Name="FormId" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="IdleTimeout" Type="int" Nullable="false" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskAlert">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="TaskId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="TimeN" Type="int" />
+    <Property Name="TimeUnit" Type="varchar" MaxLength="20" />
+    <Property Name="When" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IfNot" Type="bit" />
+    <Property Name="IfStatus" Type="varchar" MaxLength="20" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskAlertLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskAlertId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="AlertDate" Type="datetime2" Precision="7" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskAlertUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskAlertId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="IsSchedulable" Type="bit" Nullable="false" />
+    <Property Name="Value" Type="int" />
+    <Property Name="System" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="200" />
+    <Property Name="SmsAddress" Type="varchar" MaxLength="200" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="Settings" Type="varchar(max)" />
+    <Property Name="MobilePhone" Type="varchar" MaxLength="30" />
+    <Property Name="ReceiveEmail" Type="bit" Nullable="false" />
+    <Property Name="ReceiveText" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="varchar" MaxLength="256" />
+    <Property Name="SecurityStamp" Type="varchar" MaxLength="256" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Metadata" Type="xml" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Asset_AssetType_Id">
+    <End Role="AssetType" Type="Self.AssetType" Multiplicity="1" />
+    <End Role="Asset" Type="Self.Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="AssetTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Department_Id">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Asset" Type="Self.Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Manufacturer_Id">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Asset" Type="Self.Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlert_Asset_Id">
+    <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+    <End Role="AssetAlert" Type="Self.AssetAlert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlert">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlert_AssetLogType_Id">
+    <End Role="AssetLogType" Type="Self.AssetLogType" Multiplicity="1" />
+    <End Role="AssetAlert" Type="Self.AssetAlert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetLogType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlert">
+        <PropertyRef Name="AssetLogTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlertLog_AssetAlert_Id">
+    <End Role="AssetAlert" Type="Self.AssetAlert" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AssetAlertLog" Type="Self.AssetAlertLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetAlert">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlertLog">
+        <PropertyRef Name="AssetAlertId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlertLog_AssetLog_Id">
+    <End Role="AssetLog" Type="Self.AssetLog" Multiplicity="1" />
+    <End Role="AssetAlertLog" Type="Self.AssetAlertLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlertLog">
+        <PropertyRef Name="AssetLogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlertLog_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AssetAlertLog" Type="Self.AssetAlertLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlertLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlertUser_AssetAlert_Id">
+    <End Role="AssetAlert" Type="Self.AssetAlert" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AssetAlertUser" Type="Self.AssetAlertUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetAlert">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlertUser">
+        <PropertyRef Name="AssetAlertId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetAlertUser_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AssetAlertUser" Type="Self.AssetAlertUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetAlertUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetGrouping_Asset_Id">
+    <End Role="Asset" Type="Self.Asset" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AssetGrouping" Type="Self.AssetGrouping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetGrouping">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetGrouping_AssetGroup_Id">
+    <End Role="AssetGroup" Type="Self.AssetGroup" Multiplicity="1" />
+    <End Role="AssetGrouping" Type="Self.AssetGrouping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetGrouping">
+        <PropertyRef Name="AssetGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLog_Asset_Id">
+    <End Role="Asset" Type="Self.Asset" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AssetLog" Type="Self.AssetLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLog">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLog_AssetLogType_Id">
+    <End Role="AssetLogType" Type="Self.AssetLogType" Multiplicity="1" />
+    <End Role="AssetLog" Type="Self.AssetLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetLogType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLog">
+        <PropertyRef Name="AssetLogTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLogResolution_AssetLog_Id">
+    <End Role="AssetLog" Type="Self.AssetLog" Multiplicity="1" />
+    <End Role="AssetLogResolution" Type="Self.AssetLogResolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLogResolution">
+        <PropertyRef Name="AssetLogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLogResolution_Occurrence_Id">
+    <End Role="Occurrence" Type="Self.Occurrence" Multiplicity="1" />
+    <End Role="AssetLogResolution" Type="Self.AssetLogResolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occurrence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLogResolution">
+        <PropertyRef Name="OccurrenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLogResolution_Task_Id">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="AssetLogResolution" Type="Self.AssetLogResolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLogResolution">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLogType_AssetLogTypeCategory_Id">
+    <End Role="AssetLogTypeCategory" Type="Self.AssetLogTypeCategory" Multiplicity="1" />
+    <End Role="AssetLogType" Type="Self.AssetLogType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetLogTypeCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLogType">
+        <PropertyRef Name="AssetLogTypeCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLogTypeAsset_Asset_Id">
+    <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+    <End Role="AssetLogTypeAsset" Type="Self.AssetLogTypeAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLogTypeAsset">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetLogTypeAsset_AssetLogType_Id">
+    <End Role="AssetLogType" Type="Self.AssetLogType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AssetLogTypeAsset" Type="Self.AssetLogTypeAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetLogType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetLogTypeAsset">
+        <PropertyRef Name="AssetLogTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormLog_Form_Id">
+    <End Role="Form" Type="Self.Form" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FormLog" Type="Self.FormLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormLog">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Occurrence_Asset_Id">
+    <End Role="Asset" Type="Self.Asset" Multiplicity="0..1" />
+    <End Role="Occurrence" Type="Self.Occurrence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Occurrence">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Occurrence_Schedule_Id">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="Occurrence" Type="Self.Occurrence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Occurrence">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Occurrence_Task_Id">
+    <End Role="Task" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Occurrence" Type="Self.Occurrence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Occurrence">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Occurrence_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Occurrence" Type="Self.Occurrence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Occurrence">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OccurrenceLog_Occurrence_Id">
+    <End Role="Occurrence" Type="Self.Occurrence" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OccurrenceLog" Type="Self.OccurrenceLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occurrence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OccurrenceLog">
+        <PropertyRef Name="OccurrenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Task_Id">
+    <End Role="Task" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleAsset_Asset_Id">
+    <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+    <End Role="ScheduleAsset" Type="Self.ScheduleAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleAsset">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleAsset_Schedule_Id">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ScheduleAsset" Type="Self.ScheduleAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleAsset">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleAsset_ScheduleAssetType_Id">
+    <End Role="ScheduleAssetType" Type="Self.ScheduleAssetType" Multiplicity="1" />
+    <End Role="ScheduleAsset" Type="Self.ScheduleAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScheduleAssetType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleAsset">
+        <PropertyRef Name="ScheduleAssetTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleLog_Schedule_Id">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleLog" Type="Self.ScheduleLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleLog">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleUser_Schedule_Id">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ScheduleUser" Type="Self.ScheduleUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleUser">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleUser_ScheduleUserType_Id">
+    <End Role="ScheduleUserType" Type="Self.ScheduleUserType" Multiplicity="1" />
+    <End Role="ScheduleUser" Type="Self.ScheduleUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScheduleUserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleUser">
+        <PropertyRef Name="ScheduleUserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleUser_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ScheduleUser" Type="Self.ScheduleUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Form">
+    <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_TaskCategory_Id">
+    <End Role="TaskCategory" Type="Self.TaskCategory" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="TaskCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_TaskType_Id">
+    <End Role="TaskType" Type="Self.TaskType" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="TaskTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskAlert_Task_Id">
+    <End Role="Task" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskAlert" Type="Self.TaskAlert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAlert">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskAlertLog_TaskAlert_Id">
+    <End Role="TaskAlert" Type="Self.TaskAlert" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskAlertLog" Type="Self.TaskAlertLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskAlert">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAlertLog">
+        <PropertyRef Name="TaskAlertId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskAlertLog_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="TaskAlertLog" Type="Self.TaskAlertLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAlertLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskAlertUser_TaskAlert_Id">
+    <End Role="TaskAlert" Type="Self.TaskAlert" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskAlertUser" Type="Self.TaskAlertUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskAlert">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAlertUser">
+        <PropertyRef Name="TaskAlertId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskAlertUser_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="TaskAlertUser" Type="Self.TaskAlertUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskAlertUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLog_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserLog" Type="Self.UserLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role_Id">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User_Id">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetTaskAlertCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LastDate" Type="datetime" Mode="In" />
+    <Parameter Name="OffsetPast" Type="int" Mode="In" />
+    <Parameter Name="OffsetFuture" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="AltaskDataModelStoreContainer">
+    <EntitySet Name="Asset" EntityType="Self.Asset" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetAlert" EntityType="Self.AssetAlert" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetAlertLog" EntityType="Self.AssetAlertLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetAlertUser" EntityType="Self.AssetAlertUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetGroup" EntityType="Self.AssetGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetGrouping" EntityType="Self.AssetGrouping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetLog" EntityType="Self.AssetLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetLogResolution" EntityType="Self.AssetLogResolution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetLogType" EntityType="Self.AssetLogType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetLogTypeAsset" EntityType="Self.AssetLogTypeAsset" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetLogTypeCategory" EntityType="Self.AssetLogTypeCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssetType" EntityType="Self.AssetType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormLog" EntityType="Self.FormLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Occurrence" EntityType="Self.Occurrence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OccurrenceLog" EntityType="Self.OccurrenceLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleAsset" EntityType="Self.ScheduleAsset" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleAssetType" EntityType="Self.ScheduleAssetType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleLog" EntityType="Self.ScheduleLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleUser" EntityType="Self.ScheduleUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleUserType" EntityType="Self.ScheduleUserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Setting" EntityType="Self.Setting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskAlert" EntityType="Self.TaskAlert" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskAlertLog" EntityType="Self.TaskAlertLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskAlertUser" EntityType="Self.TaskAlertUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskCategory" EntityType="Self.TaskCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskType" EntityType="Self.TaskType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLog" EntityType="Self.UserLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Asset_AssetType_Id" Association="Self.FK_Asset_AssetType_Id">
+      <End Role="AssetType" EntitySet="AssetType" />
+      <End Role="Asset" EntitySet="Asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Department_Id" Association="Self.FK_Asset_Department_Id">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Asset" EntitySet="Asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Manufacturer_Id" Association="Self.FK_Asset_Manufacturer_Id">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Asset" EntitySet="Asset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlert_Asset_Id" Association="Self.FK_AssetAlert_Asset_Id">
+      <End Role="Asset" EntitySet="Asset" />
+      <End Role="AssetAlert" EntitySet="AssetAlert" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlert_AssetLogType_Id" Association="Self.FK_AssetAlert_AssetLogType_Id">
+      <End Role="AssetLogType" EntitySet="AssetLogType" />
+      <End Role="AssetAlert" EntitySet="AssetAlert" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlertLog_AssetAlert_Id" Association="Self.FK_AssetAlertLog_AssetAlert_Id">
+      <End Role="AssetAlert" EntitySet="AssetAlert" />
+      <End Role="AssetAlertLog" EntitySet="AssetAlertLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlertLog_AssetLog_Id" Association="Self.FK_AssetAlertLog_AssetLog_Id">
+      <End Role="AssetLog" EntitySet="AssetLog" />
+      <End Role="AssetAlertLog" EntitySet="AssetAlertLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlertLog_User_Id" Association="Self.FK_AssetAlertLog_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="AssetAlertLog" EntitySet="AssetAlertLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlertUser_AssetAlert_Id" Association="Self.FK_AssetAlertUser_AssetAlert_Id">
+      <End Role="AssetAlert" EntitySet="AssetAlert" />
+      <End Role="AssetAlertUser" EntitySet="AssetAlertUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetAlertUser_User_Id" Association="Self.FK_AssetAlertUser_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="AssetAlertUser" EntitySet="AssetAlertUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetGrouping_Asset_Id" Association="Self.FK_AssetGrouping_Asset_Id">
+      <End Role="Asset" EntitySet="Asset" />
+      <End Role="AssetGrouping" EntitySet="AssetGrouping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetGrouping_AssetGroup_Id" Association="Self.FK_AssetGrouping_AssetGroup_Id">
+      <End Role="AssetGroup" EntitySet="AssetGroup" />
+      <End Role="AssetGrouping" EntitySet="AssetGrouping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLog_Asset_Id" Association="Self.FK_AssetLog_Asset_Id">
+      <End Role="Asset" EntitySet="Asset" />
+      <End Role="AssetLog" EntitySet="AssetLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLog_AssetLogType_Id" Association="Self.FK_AssetLog_AssetLogType_Id">
+      <End Role="AssetLogType" EntitySet="AssetLogType" />
+      <End Role="AssetLog" EntitySet="AssetLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLogResolution_AssetLog_Id" Association="Self.FK_AssetLogResolution_AssetLog_Id">
+      <End Role="AssetLog" EntitySet="AssetLog" />
+      <End Role="AssetLogResolution" EntitySet="AssetLogResolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLogResolution_Occurrence_Id" Association="Self.FK_AssetLogResolution_Occurrence_Id">
+      <End Role="Occurrence" EntitySet="Occurrence" />
+      <End Role="AssetLogResolution" EntitySet="AssetLogResolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLogResolution_Task_Id" Association="Self.FK_AssetLogResolution_Task_Id">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="AssetLogResolution" EntitySet="AssetLogResolution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLogType_AssetLogTypeCategory_Id" Association="Self.FK_AssetLogType_AssetLogTypeCategory_Id">
+      <End Role="AssetLogTypeCategory" EntitySet="AssetLogTypeCategory" />
+      <End Role="AssetLogType" EntitySet="AssetLogType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLogTypeAsset_Asset_Id" Association="Self.FK_AssetLogTypeAsset_Asset_Id">
+      <End Role="Asset" EntitySet="Asset" />
+      <End Role="AssetLogTypeAsset" EntitySet="AssetLogTypeAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetLogTypeAsset_AssetLogType_Id" Association="Self.FK_AssetLogTypeAsset_AssetLogType_Id">
+      <End Role="AssetLogType" EntitySet="AssetLogType" />
+      <End Role="AssetLogTypeAsset" EntitySet="AssetLogTypeAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormLog_Form_Id" Association="Self.FK_FormLog_Form_Id">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormLog" EntitySet="FormLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Occurrence_Asset_Id" Association="Self.FK_Occurrence_Asset_Id">
+      <End Role="Asset" EntitySet="Asset" />
+      <End Role="Occurrence" EntitySet="Occurrence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Occurrence_Schedule_Id" Association="Self.FK_Occurrence_Schedule_Id">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="Occurrence" EntitySet="Occurrence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Occurrence_Task_Id" Association="Self.FK_Occurrence_Task_Id">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Occurrence" EntitySet="Occurrence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Occurrence_User_Id" Association="Self.FK_Occurrence_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="Occurrence" EntitySet="Occurrence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OccurrenceLog_Occurrence_Id" Association="Self.FK_OccurrenceLog_Occurrence_Id">
+      <End Role="Occurrence" EntitySet="Occurrence" />
+      <End Role="OccurrenceLog" EntitySet="OccurrenceLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Task_Id" Association="Self.FK_Schedule_Task_Id">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleAsset_Asset_Id" Association="Self.FK_ScheduleAsset_Asset_Id">
+      <End Role="Asset" EntitySet="Asset" />
+      <End Role="ScheduleAsset" EntitySet="ScheduleAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleAsset_Schedule_Id" Association="Self.FK_ScheduleAsset_Schedule_Id">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleAsset" EntitySet="ScheduleAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleAsset_ScheduleAssetType_Id" Association="Self.FK_ScheduleAsset_ScheduleAssetType_Id">
+      <End Role="ScheduleAssetType" EntitySet="ScheduleAssetType" />
+      <End Role="ScheduleAsset" EntitySet="ScheduleAsset" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleLog_Schedule_Id" Association="Self.FK_ScheduleLog_Schedule_Id">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleLog" EntitySet="ScheduleLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleUser_Schedule_Id" Association="Self.FK_ScheduleUser_Schedule_Id">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleUser" EntitySet="ScheduleUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleUser_ScheduleUserType_Id" Association="Self.FK_ScheduleUser_ScheduleUserType_Id">
+      <End Role="ScheduleUserType" EntitySet="ScheduleUserType" />
+      <End Role="ScheduleUser" EntitySet="ScheduleUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleUser_User_Id" Association="Self.FK_ScheduleUser_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="ScheduleUser" EntitySet="ScheduleUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Form" Association="Self.FK_Task_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_TaskCategory_Id" Association="Self.FK_Task_TaskCategory_Id">
+      <End Role="TaskCategory" EntitySet="TaskCategory" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_TaskType_Id" Association="Self.FK_Task_TaskType_Id">
+      <End Role="TaskType" EntitySet="TaskType" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskAlert_Task_Id" Association="Self.FK_TaskAlert_Task_Id">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="TaskAlert" EntitySet="TaskAlert" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskAlertLog_TaskAlert_Id" Association="Self.FK_TaskAlertLog_TaskAlert_Id">
+      <End Role="TaskAlert" EntitySet="TaskAlert" />
+      <End Role="TaskAlertLog" EntitySet="TaskAlertLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskAlertLog_User_Id" Association="Self.FK_TaskAlertLog_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="TaskAlertLog" EntitySet="TaskAlertLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskAlertUser_TaskAlert_Id" Association="Self.FK_TaskAlertUser_TaskAlert_Id">
+      <End Role="TaskAlert" EntitySet="TaskAlert" />
+      <End Role="TaskAlertUser" EntitySet="TaskAlertUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskAlertUser_User_Id" Association="Self.FK_TaskAlertUser_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="TaskAlertUser" EntitySet="TaskAlertUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLog_User_Id" Association="Self.FK_UserLog_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLog" EntitySet="UserLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role_Id" Association="Self.FK_UserRole_Role_Id">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User_Id" Association="Self.FK_UserRole_User_Id">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

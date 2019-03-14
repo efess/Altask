@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altask.Data", "Altask.Data\Altask.Data.csproj", "{EB44DB42-EFEB-420B-A2E3-03B8035FEB30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altask.www", "Altask.www\Altask.www.csproj", "{5C0A9A28-4732-463E-997C-46A57FC891ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FEB97C5C-42F3-45D2-9F32-886A9EECAD48}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB44DB42-EFEB-420B-A2E3-03B8035FEB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB44DB42-EFEB-420B-A2E3-03B8035FEB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB44DB42-EFEB-420B-A2E3-03B8035FEB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB44DB42-EFEB-420B-A2E3-03B8035FEB30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0A9A28-4732-463E-997C-46A57FC891ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0A9A28-4732-463E-997C-46A57FC891ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0A9A28-4732-463E-997C-46A57FC891ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0A9A28-4732-463E-997C-46A57FC891ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

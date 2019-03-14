@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EB44DB42-EFEB-420B-A2E3-03B8035FEB30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Altask.Data</RootNamespace>
+    <AssemblyName>Altask.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DateTimeExtentions.cs" />
+    <Compile Include="Dto\Asset.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetAlert.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetAlertLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetAlertUser.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetGroup.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetGrouping.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetLogResolution.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetLogType.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetLogTypeAsset.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetLogTypeCategory.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\AssetType.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Department.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\DtoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Form.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\FormLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Manufacturer.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Occurrence.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\OccurrenceLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Partials\Schedule.cs" />
+    <Compile Include="Dto\Role.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Schedule.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\ScheduleAsset.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\ScheduleAssetType.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\ScheduleLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\ScheduleUser.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\ScheduleUserType.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Setting.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\Task.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\TaskAlert.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\TaskAlertLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\TaskAlertUser.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\TaskCategory.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\TaskType.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\User.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\UserLog.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dto\UserRole.cs">
+      <DependentUpon>DtoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult.cs" />
+    <Compile Include="Error.cs" />
+    <Compile Include="ErrorDescriber.cs" />
+    <Compile Include="ISupportsAuthorFields.cs" />
+    <Compile Include="ISupportsIntId.cs" />
+    <Compile Include="ISupportsLongId.cs" />
+    <Compile Include="Json.cs" />
+    <Compile Include="Model\AltaskDbContext.cs" />
+    <Compile Include="Model\AltaskEntities.cs" />
+    <Compile Include="Model\Asset.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetAlert.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetAlertLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetAlertUser.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetGroup.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetGrouping.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetLogResolution.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetLogType.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetLogTypeAsset.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetLogTypeCategory.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetType.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DatabaseModel.Views.cs" />
+    <Compile Include="Model\DbEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Department.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EntityResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Form.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FormLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IMessageService.cs" />
+    <Compile Include="Model\Manufacturer.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Occurrence.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OccurrenceLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Partials\User.cs" />
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Schedule.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ScheduleAsset.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ScheduleAssetType.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ScheduleLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ScheduleUser.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ScheduleUserType.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Setting.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Task.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaskAlert.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaskAlertLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaskAlertUser.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaskCategory.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaskType.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserLog.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserManager.cs" />
+    <Compile Include="Model\UserRole.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserStore.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Model\DatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DatabaseModel.edmx.diagram">
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\EntityResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EntityResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dto\DtoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DtoModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\DbEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

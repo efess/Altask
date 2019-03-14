@@ -1,0 +1,126 @@
+﻿<div page-loading="$ctrl.working" pl-message="$ctrl.working">
+</div>
+<div class="settings container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 height-if-992">
+            <div class="well">
+                <fieldset>
+                    <legend>Alert Resolution Defaults</legend>
+                    <form class="form-horizontal">
+                        <div class="alert alert-danger" role="alert" ng-show="!$ctrl.isValid()">
+                            <h4 class="alert-heading">Errors</h4>
+                            <p>The following errors must be addressed before the settings can be saved!</p>
+                            <hr>
+                            <p class="mb-0" ng-repeat="x in $ctrl.errors">&bull; {{x.error}}</p>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-lg-1">Name:</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-change="$ctrl.markDirty();" ng-model="$ctrl.settings.alertResolution.defaults.name" req-data="Name" rd-errors="$ctrl.errors" />
+                                <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-lg-1">Description:</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-change="$ctrl.markDirty();" ng-model="$ctrl.settings.alertResolution.defaults.description" req-data="Description" rd-errors="$ctrl.errors" />
+                                <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-1">Task Category:</label>
+                            <div class="col-lg-3">
+                                <select class="form-control" ng-change="$ctrl.markDirty()" ng-model="$ctrl.settings.alertResolution.defaults.taskCategoryId" ng-options="x.Id as x.Name for x in $ctrl.taskCategories"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-1">Form:</label>
+                            <div class="col-lg-3">
+                                <select class="form-control" ng-change="$ctrl.markDirty()" ng-model="$ctrl.settings.alertResolution.defaults.formId" ng-options="x.Id as x.Name for x in $ctrl.forms"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label">As Early as:</label>
+                            <div class="col-lg-1">
+                                <input type="number" class="form-control" width="100" min="1" max="12" ng-change="$ctrl.markDirty()" ng-model="$ctrl.settings.alertResolution.defaults.asEarlyAsN" />
+                            </div>
+                            <div class="col-lg-1" style="padding-left: 0px; padding-right: 30px;">
+                                <select id="frequency" ng-change="$ctrl.markDirty()" ng-model="$ctrl.settings.alertResolution.defaults.asEarlyAsFrequency" class="form-control">
+                                    <option value="">Not Specified</option>
+                                    <option value="Minute(s)">Minute(s)</option>
+                                    <option value="Hour(s)">Hour(s)</option>
+                                    <option value="Day(s)">Day(s)</option>
+                                    <option value="Week(s)">Week(s)</option>
+                                    <option value="Month(s)">Month(s)</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-1" style="padding-top: 6px; padding-left: 0px; margin-left: -16px;">
+                                Before
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label">Idle Timeout:</label>
+                            <div class="col-lg-1">
+                                <input type="number" class="form-control" width="100" min="1" max="60" ng-change="$ctrl.markDirty()" ng-model="$ctrl.settings.alertResolution.defaults.idleTimeout" />
+                            </div>
+                            <div class="col-lg-1" style="padding-top: 6px; padding-left: 8px; margin-left: -16px;">
+                                minute(s)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <button uib-tooltip="Save Changes..." ng-click="$ctrl.save()" ng-disabled="!$ctrl.dirty || !$ctrl.isValid()" class="btn btn-success">Save</button>
+                                <button uib-tooltip="Discard Changes..." ng-click="$ctrl.discard()" ng-disabled="!$ctrl.dirty" class="btn btn-default">Discard</button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+                <fieldset>
+                    <legend>Outgoing Email</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-lg-1">Smtp Address:</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-change="$ctrl.markDirty();" ng-model="$ctrl.settings.system.email.smtpAddress" req-data="Smtp Address" rd-errors="$ctrl.errors" />
+                                <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label">Smtp Port:</label>
+                            <div class="col-lg-1">
+                                <input type="number" class="form-control" width="100" min="1" max="65535" ng-change="$ctrl.markDirty()" ng-model="$ctrl.settings.system.email.smtpPort" req-data="Smtp Port" rd-errors="$ctrl.errors" />
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-lg-1">From Email:</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-change="$ctrl.markDirty();" ng-model="$ctrl.settings.system.email.from" req-data="From Email" rd-errors="$ctrl.errors" />
+                                <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-lg-1">Username:</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-change="$ctrl.markDirty();" ng-model="$ctrl.settings.system.email.userName" req-data="Username" rd-errors="$ctrl.errors" />
+                                <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="control-label col-lg-1">Password:</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="password" ng-change="$ctrl.markDirty();" ng-model="$ctrl.settings.system.email.password" req-data="Password" rd-errors="$ctrl.errors" />
+                                <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <button uib-tooltip="Save Changes..." ng-click="$ctrl.save()" ng-disabled="!$ctrl.dirty || !$ctrl.isValid()" class="btn btn-success">Save</button>
+                                <button uib-tooltip="Discard Changes..." ng-click="$ctrl.discard()" ng-disabled="!$ctrl.dirty" class="btn btn-default">Discard</button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
