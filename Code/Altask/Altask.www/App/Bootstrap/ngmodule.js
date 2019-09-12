@@ -30,7 +30,6 @@ import uiBootstrap from "angular-ui-bootstrap";
 import * as apiCheck from "api-check";
 import formly from "angular-formly";
 import formlyBootstrap from "angular-formly-templates-bootstrap";
-import * as uiLayout from "angular-ui-layout";
 
 import mainModule from "../FormBuilder/main";
 
@@ -51,8 +50,7 @@ export const ngmodule = angular.module("app", [
     MAIN_MODULE.name,
     GLOBAL_MODULE.name,
     "ui.calendar",
-    "angularjs-dropdown-multiselect",
-    uiLayout
+    "angularjs-dropdown-multiselect"
 ]);
 
 ngmodule.config(["$uiRouterProvider", "uibDatepickerConfig", "uibDatepickerPopupConfig", "formlyConfigProvider", function ($uiRouterProvider, uibDatepickerConfig, uibDatepickerPopupConfig, formlyConfig) {

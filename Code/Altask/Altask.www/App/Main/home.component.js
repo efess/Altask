@@ -68,9 +68,16 @@ class HomeController {
     addView(e, tab) {
         e.stopPropagation();
         $(e.currentTarget).parents(".dropdown-menu").toggle();
+        let id = 0;
+
+        this.settings.tabs.forEach((tab) => {
+            if (tab.id >= id) {
+                id = tab.id + 1;
+            }
+        });
 
         let userTab = {
-            id: this.settings.tabs.length,
+            id: id,
             caption: "My Tasks",
             calendar: {
                 view: "month",
@@ -86,6 +93,28 @@ class HomeController {
             multiUser: false,
             showFilter: false,
             showLegend: true,
+            filterC: {
+                customText: {
+                    buttonDefaultText: 'Status',
+                },
+                data: [{ id: 2, label: "Past Due" }, { id: 3, label: "Due Today" }, { id: 4, label: "Complete" }, { id: 5, label: "In Progress" }],
+                events: {
+                    onSelectionChanged: () => {
+                        this.settings.activeTab().filters.cModel = this.assetTab.filterC.model;
+                        this.saveSettings();
+                        (this.calendar()).fullCalendar('refetchEvents');
+                    }
+                },
+                model: [],
+                settings: {
+                    clearSearchOnClose: true,
+                    enableSearch: true,
+                    searchField: "label",
+                    idProperty: "id",
+                    smartButtonMaxItems: 5,
+                    scrollable: true,
+                },
+            },
             showLegendToggle: true,
             showMonthView: true,
             showDayView: true,
@@ -202,6 +231,12 @@ class HomeController {
         btn.addClass("evt-toggle-actions-icon-left");
     }
 
+    toggleLegend() {
+        this.settings.activeTab().showLegend = !this.settings.activeTab().showLegend;
+        this.saveSettings();
+        setTimeout(() => $(window).trigger("resize"), 1)
+    }
+
     calendar() {
         let index = this.settings.selectedTab;
         let entry = this.calendars.find((elem) => { return elem.id === index; });
@@ -246,16 +281,17 @@ class HomeController {
                     listMonth: "Month List",
                     today: "Today"
                 },
-                customButtons: {
-                    showLegend: {
-                        text: "Toggle Legend",
-                        click: () => {
-                            this.settings.activeTab().showLegend = !this.settings.activeTab().showLegend;
-                            this.saveSettings();
-                            $(window).trigger("resize");
-                        }
-                    }
-                },
+                //customButtons: {
+                //    showLegend: {
+                //        text: "Toggle Legend",
+                //        click: () => {
+                //            this.settings.activeTab().showLegend = !this.settings.activeTab().showLegend;
+                //            this.saveSettings();
+                //            setTimeout(() => $(window).trigger("resize"), 1)
+                            
+                //        }
+                //    }
+                //},
                 eventOrder: (a, b) => {
                     let aDate = moment(a.miscProps.task.Date);
                     let bDate = moment(b.miscProps.task.Date);
@@ -300,11 +336,11 @@ class HomeController {
                         (this.AppConfig.user.roles.find((elem) => { return elem.name === "Administrator"; }) !== undefined ? actionDetail : ``) +
                         `</div>`;
 
-                    let showActions = `<span uib-tooltip="Show/Hide Task Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions" ng-click="$ctrl.toggleActions($event, ` + index + `, '` + event.id + `')">
+                    let showActions = `<span uib-tooltip="Show/Hide Task Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions" >
                     <span class="evt-toggle-actions-icon-left"></span>
                 </span>` + actions;
 
-                    let html = `<span class="evt-container event">
+                    let html = `<span class="evt-container event" ng-click="$ctrl.toggleActions($event, ` + index + `, '` + event.id + `')">
                     <table class="evt-table">
                         <tr>
                             <td class="evt-data">
@@ -378,6 +414,21 @@ class HomeController {
                         this.settings.activeTab().calendar.view = view.name;
                         this.saveSettings();
                     }
+                    // Joe - WO1 - hack the toolbar
+                    const toolbars = $('.fc-toolbar.fc-header-toolbar')
+                    $.each(toolbars, (idx, dom) => {
+                        const toolbar = $(dom)
+                        const right = $('.fc-right', toolbar)
+                        const left = $('.fc-left', toolbar)
+                        const center = $('.fc-center', toolbar)
+                        $('.fc-clear', toolbar).remove()
+
+                        toolbar.append(left)
+                        toolbar.append(center)
+                        toolbar.append(right)
+                    })
+
+                    // Joe - end toolbar hack
                 }
             });
 
@@ -681,20 +732,29 @@ class HomeController {
             });
 
             $(window).on("resize", () => {
-                let height = $("#cal_tabs").parent().height();
-                let offset = 0;
-                let tab = this.settings.activeTab();
+                const $calTabs = $("#cal_tabs")
+                const containerHeight = $calTabs.height()
+                const tabsHeight = $(".nav.nav-tabs", $calTabs).outerHeight(true)
+                const $activeTab = $(".tab-pane.active")
+                var offset = 0;
+                const calendar = this.calendar()
+                const children = $activeTab.children()
 
-                if (tab.showFilter && tab.showLegend) {
-                    offset = 150;
-                } else if (tab.showFilter && !tab.showLegend || !tab.showFilter && tab.showLegend) {
-                    offset = 96;
-                } else {
-                    offset = 46;
+                for (var i = 0; i < children.length; i++) {
+                    if (children[i] !== calendar.get(0)) {
+                        offset += $(children[i]).outerHeight(true)
+                    }
                 }
+                //if (tab.showFilter && tab.showLegend) {
+                //    offset = 150;
+                //} else if (tab.showFilter && !tab.showLegend || !tab.showFilter && tab.showLegend) {
+                //    offset = 96;
+                //} else {
+                //    offset = 46;
+                //}
 
-                (this.calendar()).fullCalendar('option', 'height', height - offset);
-                $('.alert-list').height($('.alert-list').parent().height() - 85);
+                //calendar.fullCalendar('option', 'height', containerHeight - tabsHeight - offset);
+                //$('.alert-list').height($('.alert-list').parent().height() - 85);
             });
 
             $(document).on("mouseleave", ".evt-container, .alert-container", function () {
@@ -1462,9 +1522,9 @@ class HomeController {
             // We could be receiving an Occurrence object or an TaskInstance object.
             // If we receive the later we need to mimic the fields of our TaskInstance
             // object.
-            if (this.task.this.task) {
-                this.task.Name = this.task.this.task.Name;
-                this.task.IdleTimeout = this.task.this.task.IdleTimeout;
+            if (this.task) {
+                this.task.Name = this.task.Name;
+                this.task.IdleTimeout = this.task.IdleTimeout;
             }
 
             if (!this.task.OccurrenceId) {
@@ -1503,6 +1563,12 @@ class HomeController {
                     if (assetIds.find((id) => id === this.task.AssetId) === undefined) {
                         show = false;
                     }
+
+                    if (this.assetTab.filterC.model.length > 0) {
+                        if (!this.statusMatches(this.assetTab.filterC.model[0].id, this.task)) {
+                            show = false;
+                        }
+                    }
                 }
 
                 if (show && this.showEvent(this.task, tab)) {
@@ -1524,6 +1590,30 @@ class HomeController {
                 }
             });
         });
+    }
+
+    statusMatches(status, task) {
+        let date = moment(task.Date);
+        let now = moment();
+        let today = date.month() === now.month() && date.day() === now.day();
+        let inPast = date.isBefore(moment());
+
+        if (!task.Completed) {
+            if (inPast && status == 2) {
+                return true;
+            }
+            else if (today && status == 3) {
+                return true;
+            }
+            else if (task.Started && status == 5) {
+                return true;
+            }
+        }
+        else if (status == 4) {
+            return true;
+        }
+
+        return false;
     }
 
     showAlert(alert) {
@@ -1558,6 +1648,12 @@ class HomeController {
             showEvent = false;
         }
 
+        if (this.assetTab.filterC && this.assetTab.filterC.model.length > 0) {
+            if (!this.statusMatches(this.assetTab.filterC.model[0].id, task)) {
+                showEvent = false;
+            }
+        }
+
         return showEvent;
     }
 
@@ -1580,8 +1676,8 @@ class HomeController {
         e.stopPropagation();
         $(".tooltip").prop("tooltip-is-open", false);
         let target = $(e.currentTarget);
-        let elem = $(".evt-actions-popover", target.parent());
-        let btn = target.children("span");
+        let elem = target.children(".evt-actions-popover");
+        let btn = target.children(".evt-toggle-actions").children("span");
 
         if (elem.hasClass("evt-hide")) {
             elem.removeClass("evt-hide");
@@ -1649,6 +1745,12 @@ class HomeController {
 
                     if (assetIds.find((id) => id === task.AssetId) === undefined) {
                         show = false;
+                    }
+
+                    if (this.assetTab.filterC.model.length > 0) {
+                        if (!this.statusMatches(this.assetTab.filterC.model[0].id, this.task)) {
+                            show = false;
+                        }
                     }
                 }
 
@@ -1920,7 +2022,7 @@ class HomeController {
             let resumedOn = this.task.ResumedOn ? moment(this.task.ResumedOn) : null;
 
             if (this.task.StartedBy && !this.task.Completed && (!stoppedOn || (resumedOn && resumedOn > stoppedOn))) {
-                buttons.push({
+                buttons.stop = {
                     label: "Stop",
                     className: 'btn-success',
                     callback: () => {
@@ -1940,9 +2042,10 @@ class HomeController {
                                 this.DialogService.error(error);
                             })
                             .finally(() => this.working = "");
-                        return false;
+                        scope.$destroy();
+                        return true;
                     }
-                });
+                };
             }
         }
 

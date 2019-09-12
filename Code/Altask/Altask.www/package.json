@@ -38,8 +38,8 @@
     "moment": "^2.18.1",
     "oclazyload": "^1.1.0",
     "rxjs": "^5.4.3",
-    "source-map-loader": "^0.2.1",
     "signalr-no-jquery": "^0.1.8",
+    "source-map-loader": "^0.2.1",
     "textangular": "^1.5.16"
   },
   "devDependencies": {
