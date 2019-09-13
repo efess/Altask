@@ -1,0 +1,62 @@
+﻿<div page-loading="$ctrl.working" pl-message="$ctrl.working">
+</div>
+<div class="services-panel container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 height-if-992">
+            <div class="well">
+                <button type="button" class="btn btn-primary btn-refresh-all" ng-click="$ctrl.fetchStatus()">Refresh All</button>
+                <fieldset>
+                    <legend>Asset Alert Service</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label">Status: <strong>{{$ctrl.assetAlertService.running ? 'Running' : 'Stopped'}}</strong></label>
+                                <button uib-tooltip="Start Service" type="button" class="btn btn-success btn-start" ng-show="!$ctrl.assetAlertService.running" ng-click="$ctrl.startService('AssetAlertService')"><i class="fa fa-play" aria-hidden="true"></i></button>
+                                <button uib-tooltip="Stop Service" type="button" class="btn btn-danger btn-stop" ng-show="$ctrl.assetAlertService.running" ng-click="$ctrl.stopService('AssetAlertService')"><i class="fa fa-stop" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label">Last Run Date: <strong>{{$ctrl.assetAlertService.lastRun || 'n/a'}}</strong></label>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+                <fieldset>
+                    <legend>Occurrence Service</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label">Status: <strong>{{$ctrl.occurrenceService.running ? 'Running' : 'Stopped'}}</strong></label>
+                                <button uib-tooltip="Start Service" type="button" class="btn btn-success btn-start" ng-show="!$ctrl.occurrenceService.running" ng-click="$ctrl.startService('OccurrenceService')"><i class="fa fa-play" aria-hidden="true"></i></button>
+                                <button uib-tooltip="Stop Service" type="button" class="btn btn-danger btn-stop" ng-show="$ctrl.occurrenceService.running" ng-click="$ctrl.stopService('OccurrenceService')"><i class="fa fa-stop" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label">Last Run Date: <strong>{{$ctrl.occurrenceService.lastRun || 'n/a'}}</strong></label>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+                <fieldset>
+                    <legend>Task Alert Service</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label">Status: <strong>{{$ctrl.taskAlertService.running ? 'Running' : 'Stopped'}}</strong></label>
+                                <button uib-tooltip="Start Service" type="button" class="btn btn-success btn-start" ng-show="!$ctrl.taskAlertService.running" ng-click="$ctrl.startService('TaskAlertService')"><i class="fa fa-play" aria-hidden="true"></i></button>
+                                <button uib-tooltip="Stop Service" type="button" class="btn btn-danger btn-stop" ng-show="$ctrl.taskAlertService.running" ng-click="$ctrl.stopService('TaskAlertService')"><i class="fa fa-stop" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label">Last Run Date: <strong>{{$ctrl.taskAlertService.lastRun || 'n/a'}}</strong></label>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

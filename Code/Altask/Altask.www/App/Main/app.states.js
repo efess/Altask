@@ -72,6 +72,14 @@ export const assetTypesState = {
     data: { requiresAuth: true, roles: ['Administrator'] }
 };
 
+export const reportsState = {
+	parent: 'app',
+	name: 'reports',
+	url: '/reports',
+	component: 'reports',
+	data: { requiresAuth: true, roles: ['Administrator'] }
+};
+
 // This is the users state.  It is activated when a user navigates to the /users.
 export const usersState = {
     parent: 'app',

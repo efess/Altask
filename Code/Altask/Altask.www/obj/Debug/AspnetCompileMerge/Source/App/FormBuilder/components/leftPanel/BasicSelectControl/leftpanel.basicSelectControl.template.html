@@ -1,0 +1,112 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 edit-properties-header"><h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit Properties:</h5></div>
+        </div>
+        <div class="marginTopFivepixels"></div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <label class="control-label greyText">
+                    Add New Option:
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="inputAddNewBasicOption" placeholder="add new option" ng-model="leftPanelController.basicSelectOption.saisie">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" ng-click="leftPanelController.addNewOptionBasicSelect()">Add</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <label class="control-label greyText editPropertiesLabel">
+                    Edit/Remove Options:
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <table id="basic_select_options" class="table table-striped basic-select-tbl" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Option</th>
+                                    <th style="width: 136px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="basicSelectRow in leftPanelController.basicSelectOptions.rows | filter:basicSelectFilter as basicSelectRow">
+                                    <td>
+                                        {{$index}}
+                                    </td>
+                                    <td>
+                                        {{basicSelectRow.option}}
+                                    </td>
+                                    <td style="width: 130px;">
+                                        <div class="pull-right">
+                                            <button class="btn btn-primary options-row-btn"
+                                                    ng-click="leftPanelController.upThisRow($index)">
+                                                <i class="fa fa-arrow-up"></i>
+                                            </button>
+                                            <button class="btn btn-primary options-row-btn"
+                                                    ng-click="leftPanelController.downThisRow($index)">
+                                                <i class="fa fa-arrow-down"></i>
+                                            </button>
+                                            <button class="btn btn-danger options-row-btn"
+                                                    ng-click="leftPanelController.removeRow($index)">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show="leftPanelController.basicSelectOptions.rows.length === 0" class="no-data-message">
+                             - No options: Add new options -
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="marginTopFivepixels"></div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label for="inputTextLabelUpdate"
+                           class="control-label greyText editPropertiesLabel">
+                        Label text:
+                    </label>
+                    <div class="">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="leftPanelController.fieldModel.temporyConfig.formlyLabel"
+                               id="inputTextLabelUpdate"
+                               placeholder="Add / edit control label here">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="marginTopFivepixels"></div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label for="DescriptionUpdate"
+                           class="control-label greyText editPropertiesLabel">
+                        Description:
+                    </label>
+                    <div class="">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="leftPanelController.fieldModel.temporyConfig.formlyDescription"
+                               id="DescriptionUpdate"
+                               placeholder="Add / edit description here">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <left-panel-valid-edit-footer />
+</div>

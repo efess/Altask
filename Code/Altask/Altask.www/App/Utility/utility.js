@@ -167,13 +167,17 @@ export const scheduleSummary = (schedule) => {
         switch (schedule.Frequency) {
             default: summary = summary.concat("days "); break;
             case "Weekly": summary = summary.concat("weeks "); break;
-            case "Monthly": summary = summary.concat("months"); break;
+			case "Monthly": summary = summary.concat("months"); break;
+			case "Quarterly": summary = summary.concat("quarters "); break;
+			case "Yearly": summary = summary.concat("years "); break;
         }
     } else {
         switch (schedule.Frequency) {
             default: summary = summary.concat("day "); break;
             case "Weekly": summary = summary.concat("week "); break;
-            case "Monthly": summary = summary.concat("month"); break;
+			case "Monthly": summary = summary.concat("month"); break;
+			case "Quarterly": summary = summary.concat("quarter "); break;
+			case "Yearly": summary = summary.concat("year "); break;
         }
     }
 
@@ -185,7 +189,7 @@ export const scheduleSummary = (schedule) => {
         }
     }
 
-    if (schedule.Frequency !== "Daily") {
+    if (schedule.Frequency === "Weekly" || schedule.Frequency === "Monthly") {
         summary = summary.concat(" on ");
         var moreThanOneDay = false;
         var moreThanTwoDays = false;

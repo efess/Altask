@@ -68,9 +68,16 @@ class HomeController {
     addView(e, tab) {
         e.stopPropagation();
         $(e.currentTarget).parents(".dropdown-menu").toggle();
+        let id = 0;
+
+        this.settings.tabs.forEach((tab) => {
+            if (tab.id >= id) {
+                id = tab.id + 1;
+            }
+        });
 
         let userTab = {
-            id: this.settings.tabs.length,
+            id: id,
             caption: "My Tasks",
             calendar: {
                 view: "month",
@@ -95,7 +102,7 @@ class HomeController {
         };
 
         let assetTab = {
-            id: this.settings.tabs.length,
+            id: id,
             caption: "Asset Tasks",
             calendar: {
                 view: "month",
@@ -300,11 +307,11 @@ class HomeController {
                         (this.AppConfig.user.roles.find((elem) => { return elem.name === "Administrator"; }) !== undefined ? actionDetail : ``) +
                         `</div>`;
 
-                    let showActions = `<span uib-tooltip="Show/Hide Task Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions" ng-click="$ctrl.toggleActions($event, ` + index + `, '` + event.id + `')">
+                    let showActions = `<span uib-tooltip="Show/Hide Task Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions" >
                     <span class="evt-toggle-actions-icon-left"></span>
                 </span>` + actions;
 
-                    let html = `<span class="evt-container event">
+                    let html = `<span class="evt-container event" ng-click="$ctrl.toggleActions($event, ` + index + `, '` + event.id + `')">
                     <table class="evt-table">
                         <tr>
                             <td class="evt-data">
@@ -503,6 +510,7 @@ class HomeController {
 
         angular.forEach(tasks, (task) => {
             if (this.showEvent(task)) {
+                console.log("Event pushed");
                 this.events.push(this.eventFromTask({ id: this.createUniqueId(task) }, task));
             }
         });
@@ -578,6 +586,28 @@ class HomeController {
                 events: {
                     onSelectionChanged: () => {
                         this.settings.activeTab().filters.bModel = this.assetTab.filterB.model;
+                        this.saveSettings();
+                        (this.calendar()).fullCalendar('refetchEvents');
+                    }
+                },
+                model: [],
+                settings: {
+                    clearSearchOnClose: true,
+                    enableSearch: true,
+                    searchField: "label",
+                    idProperty: "id",
+                    smartButtonMaxItems: 5,
+                    scrollable: true,
+                },
+            },
+            filterC: {
+                customText: {
+                    buttonDefaultText: 'Status',
+                },
+                data: [{ id: 2, label: "Past Due" }, { id: 3, label: "Due Today" }, { id: 4, label: "Complete" }, { id: 5, label: "In Progress" }],
+                events: {
+                    onSelectionChanged: () => {
+                        this.settings.activeTab().filters.cModel = this.assetTab.filterC.model;
                         this.saveSettings();
                         (this.calendar()).fullCalendar('refetchEvents');
                     }
@@ -1462,9 +1492,9 @@ class HomeController {
             // We could be receiving an Occurrence object or an TaskInstance object.
             // If we receive the later we need to mimic the fields of our TaskInstance
             // object.
-            if (this.task.this.task) {
-                this.task.Name = this.task.this.task.Name;
-                this.task.IdleTimeout = this.task.this.task.IdleTimeout;
+            if (this.task) {
+                this.task.Name = this.task.Name;
+                this.task.IdleTimeout = this.task.IdleTimeout;
             }
 
             if (!this.task.OccurrenceId) {
@@ -1503,6 +1533,12 @@ class HomeController {
                     if (assetIds.find((id) => id === this.task.AssetId) === undefined) {
                         show = false;
                     }
+
+                    if (this.assetTab.filterC.model.length > 0) {
+                        if (!this.statusMatches(this.assetTab.filterC.model[0].id, this.task)) {
+                            show = false;
+                        }
+                    }
                 }
 
                 if (show && this.showEvent(this.task, tab)) {
@@ -1524,6 +1560,30 @@ class HomeController {
                 }
             });
         });
+    }
+
+    statusMatches(status, task) {
+        let date = moment(task.Date);
+        let now = moment();
+        let today = date.month() === now.month() && date.day() === now.day();
+        let inPast = date.isBefore(moment());
+
+        if (!task.Completed) {
+            if (inPast && status == 2) {
+                return true;
+            }
+            else if (today && status == 3) {
+                return true;
+            }
+            else if (task.Started && status == 5) {
+                return true;
+            }
+        }
+        else if (status == 4) {
+            return true;
+        }
+
+        return false;
     }
 
     showAlert(alert) {
@@ -1558,6 +1618,12 @@ class HomeController {
             showEvent = false;
         }
 
+        if (this.assetTab.filterC && this.assetTab.filterC.model.length > 0) {
+            if (!this.statusMatches(this.assetTab.filterC.model[0].id, task)) {
+                showEvent = false;
+            }
+        }
+
         return showEvent;
     }
 
@@ -1580,8 +1646,8 @@ class HomeController {
         e.stopPropagation();
         $(".tooltip").prop("tooltip-is-open", false);
         let target = $(e.currentTarget);
-        let elem = $(".evt-actions-popover", target.parent());
-        let btn = target.children("span");
+        let elem = target.children(".evt-actions-popover");
+        let btn = target.children(".evt-toggle-actions").children("span");
 
         if (elem.hasClass("evt-hide")) {
             elem.removeClass("evt-hide");
@@ -1649,6 +1715,12 @@ class HomeController {
 
                     if (assetIds.find((id) => id === task.AssetId) === undefined) {
                         show = false;
+                    }
+
+                    if (this.assetTab.filterC.model.length > 0) {
+                        if (!this.statusMatches(this.assetTab.filterC.model[0].id, this.task)) {
+                            show = false;
+                        }
                     }
                 }
 
@@ -1920,7 +1992,7 @@ class HomeController {
             let resumedOn = this.task.ResumedOn ? moment(this.task.ResumedOn) : null;
 
             if (this.task.StartedBy && !this.task.Completed && (!stoppedOn || (resumedOn && resumedOn > stoppedOn))) {
-                buttons.push({
+                buttons.stop = {
                     label: "Stop",
                     className: 'btn-success',
                     callback: () => {
@@ -1940,9 +2012,10 @@ class HomeController {
                                 this.DialogService.error(error);
                             })
                             .finally(() => this.working = "");
-                        return false;
+                        scope.$destroy();
+                        return true;
                     }
-                });
+                };
             }
         }
 

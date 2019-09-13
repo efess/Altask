@@ -59,13 +59,13 @@
                         </div>
                         <div class="alert-list">
                             <div class="alert-wrapper" ng-repeat="x in $ctrl.alerts | filter:{visible:true} track by x.Id">
-                                <div class="alert-container {{ x.className }}" ng-class="{'alert-selected': x.selected }">
+                                <div class="alert-container {{ x.className }}" ng-class="{'alert-selected': x.selected }" ng-click="$ctrl.toggleActions($event)">
                                     <table>
                                         <tr>
                                             <td class="alert-title">{{ x.Description }}</td>
                                         </tr>
                                     </table>
-                                    <span uib-tooltip="Show/Hide Alert Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions" ng-click="$ctrl.toggleActions($event)">
+                                    <span uib-tooltip="Show/Hide Alert Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions">
                                         <span class="evt-toggle-actions-icon-left"></span>
                                     </span>
                                     <div class="evt-actions-popover evt-hide" style="height: calc(100% + 2px) !important;">
@@ -103,27 +103,31 @@
                                     </ul>
                                 </uib-tab-heading>
                                 <div ng-class="{'task-view-top-toolbar': x.showFilter }" class="filter-toolbar" ng-show="x.showFilter">
-                                    <div class="form-inline">
-                                        <span uib-tooltip="{{ x.caption + ' Filters' }}" class="glyphicon glyphicon-filter"></span>
-                                        <div ng-if="::x.type === 'asset'" class="form-group" uib-tooltip="Filter by Departments and Groups...">
-                                            <div ng-dropdown-multiselect="" events="$ctrl.assetTab.filterA.events" options="$ctrl.assetTab.filterA.data" selected-model="$ctrl.assetTab.filterA.model" extra-settings="$ctrl.assetTab.filterA.settings" translation-texts="$ctrl.assetTab.filterA.customText"></div>
-                                        </div>
-                                        <div ng-if="::x.type === 'asset'" class="form-group" uib-tooltip="Filter by Asset...">
-                                            <div ng-dropdown-multiselect="" events="$ctrl.assetTab.filterB.events" options="$ctrl.assetTab.filterB.data" selected-model="$ctrl.assetTab.filterB.model" extra-settings="$ctrl.assetTab.filterB.settings" translation-texts="$ctrl.assetTab.filterB.customText"></div>
-                                        </div>
-                                        <div ng-if="::x.type === 'user' && x.otherUsers" class="form-group" uib-tooltip="Filter by User...">
-                                                <div ng-dropdown-multiselect="" events="$ctrl.userTab.filter.events" options="$ctrl.userTab.filter.data" selected-model="$ctrl.userTab.filter.model" extra-settings="$ctrl.userTab.filter.settings" translation-texts="$ctrl.userTab.filter.customText"></div>
-                                        </div>
-                                        <!--<div class="checkbox">
-                                            <label uib-tooltip="Show/Hide Tasks which have been completed...">Show Completed <input type="checkbox" ng-change="$ctrl.setFilters()" ng-model="$ctrl.settings.activeTab().filters.showCompleted"></label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label uib-tooltip="Show/Hide Tasks which have been started and are in progress...">Show Started <input type="checkbox" ng-change="$ctrl.setFilters()" ng-model="$ctrl.settings.activeTab().filters.showStarted"></label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label uib-tooltip="Show/Hide Tasks which have been stopped and not resumed or completed...">Show Stopped <input type="checkbox" ng-change="$ctrl.setFilters()" ng-model="$ctrl.settings.activeTab().filters.showStopped"></label>
-                                        </div>-->
-                                    </div>
+									<div class="form-inline">
+										<span uib-tooltip="{{ x.caption + ' Filters' }}" class="glyphicon glyphicon-filter"></span>
+										<div ng-if="::x.type === 'asset'" class="form-group" uib-tooltip="Filter by Departments and Groups...">
+											<div ng-dropdown-multiselect="" events="$ctrl.assetTab.filterA.events" options="$ctrl.assetTab.filterA.data" selected-model="$ctrl.assetTab.filterA.model" extra-settings="$ctrl.assetTab.filterA.settings" translation-texts="$ctrl.assetTab.filterA.customText"></div>
+										</div>
+										<div ng-if="::x.type === 'asset'" class="form-group" uib-tooltip="Filter by Asset...">
+											<div ng-dropdown-multiselect="" events="$ctrl.assetTab.filterB.events" options="$ctrl.assetTab.filterB.data" selected-model="$ctrl.assetTab.filterB.model" extra-settings="$ctrl.assetTab.filterB.settings" translation-texts="$ctrl.assetTab.filterB.customText"></div>
+										</div>
+										<div ng-if="::x.type === 'asset'" class="form-group" uib-tooltip="Filter by Status...">
+											<div ng-dropdown-multiselect="" events="$ctrl.assetTab.filterC.events" options="$ctrl.assetTab.filterC.data" selected-model="$ctrl.assetTab.filterC.model" extra-settings="$ctrl.assetTab.filterC.settings" translation-texts="$ctrl.assetTab.filterC.customText"></div>
+										</div>
+
+										<div ng-if="::x.type === 'user' && x.otherUsers" class="form-group" uib-tooltip="Filter by User...">
+											<div ng-dropdown-multiselect="" events="$ctrl.userTab.filter.events" options="$ctrl.userTab.filter.data" selected-model="$ctrl.userTab.filter.model" extra-settings="$ctrl.userTab.filter.settings" translation-texts="$ctrl.userTab.filter.customText"></div>
+										</div>
+										<!--<div class="checkbox">
+		<label uib-tooltip="Show/Hide Tasks which have been completed...">Show Completed <input type="checkbox" ng-change="$ctrl.setFilters()" ng-model="$ctrl.settings.activeTab().filters.showCompleted"></label>
+	</div>
+	<div class="checkbox">
+		<label uib-tooltip="Show/Hide Tasks which have been started and are in progress...">Show Started <input type="checkbox" ng-change="$ctrl.setFilters()" ng-model="$ctrl.settings.activeTab().filters.showStarted"></label>
+	</div>
+	<div class="checkbox">
+		<label uib-tooltip="Show/Hide Tasks which have been stopped and not resumed or completed...">Show Stopped <input type="checkbox" ng-change="$ctrl.setFilters()" ng-model="$ctrl.settings.activeTab().filters.showStopped"></label>
+	</div>-->
+									</div>
                                 </div>
                                 <div  ng-class="{'task-view-top-toolbar': !x.showFilter && x.showLegend }" class="calendar-legend" ng-show="x.showLegend">
                                     <div class="form-inline">

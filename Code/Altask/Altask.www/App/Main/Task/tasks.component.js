@@ -48,37 +48,7 @@ class TasksController {
         e.stopPropagation();
         let schedule = angular.copy(this.schedulesTable.row(row).data());
         schedule.Id = null;
-
-        this.scheduleOptions.Active = schedule.Active;
-        this.scheduleOptions.asEarlyAsN = schedule.AsEarlyAsN || "";
-        this.scheduleOptions.asEarlyAsFrequency = "";
-
-        switch(schedule.AsEarlyAsFrequency){
-            case "Minute(s)": this.scheduleOptions.asEarlyAsFrequency = "0"; break;
-            case "Hour(s)": this.scheduleOptions.asEarlyAsFrequency = "1"; break;
-            case "Day(s)": this.scheduleOptions.asEarlyAsFrequency = "2"; break;
-            case "Week(s)": this.scheduleOptions.asEarlyAsFrequency = "3"; break;
-            case "Month(s)": this.scheduleOptions.asEarlyAsFrequency = "4"; break;
-        }
-        
-        this.scheduleOptions.time = schedule.AnyTime ? "any" : "time";
-        this.scheduleOptions.name = schedule.Name;
-        this.scheduleOptions.endsOn = schedule.EndsOn ? "date" : "occurrence";
-        this.scheduleOptions.endsAfter = schedule.EndsAfter;
-        this.scheduleOptions.endsOnDate = moment(schedule.EndsOn).toDate();
-        this.scheduleOptions.everyN = schedule.EveryN.toString();
-        this.scheduleOptions.frequency = schedule.Frequency === "Daily" ? "0" : (schedule.Frequency === "Weekly" ? "1" : "2");
-        this.scheduleOptions.onWeek = schedule.OnWeek ? schedule.OnWeek.toString() : null;
-        this.scheduleOptions.daysOfWeek[0].selected = schedule.OnSunday;
-        this.scheduleOptions.daysOfWeek[1].selected = schedule.OnMonday;
-        this.scheduleOptions.daysOfWeek[2].selected = schedule.OnTuesday;
-        this.scheduleOptions.daysOfWeek[3].selected = schedule.OnWednesday;
-        this.scheduleOptions.daysOfWeek[4].selected = schedule.OnThursday;
-        this.scheduleOptions.daysOfWeek[5].selected = schedule.OnFriday;
-        this.scheduleOptions.daysOfWeek[6].selected = schedule.OnSaturday;
-        this.scheduleOptions.startsOnDate = moment().toDate();
-        this.scheduleOptions.assets.forEach((elem) => { elem.selected = schedule.Assets.find((asset) => { return asset.AssetId === elem.Id; }) !== undefined; });
-        this.scheduleOptions.users.forEach((elem) => { elem.selected = schedule.Users.find((user) => { return user.UserId === elem.Id; }) !== undefined; });
+		this.setScheduleOptions(schedule);        
         this.updateSchedule(); 
     }
 
@@ -240,37 +210,7 @@ class TasksController {
     editSchedule(e, row) {
         e.stopPropagation();
         let schedule = angular.copy(this.schedulesTable.row(row).data());
-
-        this.scheduleOptions.Active = schedule.Active;
-        this.scheduleOptions.asEarlyAsN = schedule.AsEarlyAsN || "";
-        this.scheduleOptions.asEarlyAsFrequency = "";
-
-        switch(schedule.AsEarlyAsFrequency){
-            case "Minute(s)": this.scheduleOptions.asEarlyAsFrequency = "0"; break;
-            case "Hour(s)": this.scheduleOptions.asEarlyAsFrequency = "1"; break;
-            case "Day(s)": this.scheduleOptions.asEarlyAsFrequency = "2"; break;
-            case "Week(s)": this.scheduleOptions.asEarlyAsFrequency = "3"; break;
-            case "Month(s)": this.scheduleOptions.asEarlyAsFrequency = "4"; break;
-        }
-        
-        this.scheduleOptions.time = schedule.AnyTime ? "any" : "time";
-        this.scheduleOptions.name = schedule.Name;
-        this.scheduleOptions.endsOn = schedule.EndsOn ? "date" : "occurrence";
-        this.scheduleOptions.endsAfter = schedule.EndsAfter;
-        this.scheduleOptions.endsOnDate = moment(schedule.EndsOn).toDate();
-        this.scheduleOptions.everyN = schedule.EveryN ? schedule.EveryN.toString() : null;
-        this.scheduleOptions.frequency = schedule.Frequency === "Daily" ? "0" : (schedule.Frequency === "Weekly" ? "1" : "2");
-        this.scheduleOptions.onWeek = schedule.OnWeek ? schedule.OnWeek.toString() : null;
-        this.scheduleOptions.daysOfWeek[0].selected = schedule.OnSunday;
-        this.scheduleOptions.daysOfWeek[1].selected = schedule.OnMonday;
-        this.scheduleOptions.daysOfWeek[2].selected = schedule.OnTuesday;
-        this.scheduleOptions.daysOfWeek[3].selected = schedule.OnWednesday;
-        this.scheduleOptions.daysOfWeek[4].selected = schedule.OnThursday;
-        this.scheduleOptions.daysOfWeek[5].selected = schedule.OnFriday;
-        this.scheduleOptions.daysOfWeek[6].selected = schedule.OnSaturday;
-        this.scheduleOptions.startsOnDate = moment(schedule.StartsOn).toDate();
-        this.scheduleOptions.assets.forEach((elem) => { elem.selected = schedule.Assets.find((asset) => { return asset.AssetId === elem.Id; }) !== undefined; });
-        this.scheduleOptions.users.forEach((elem) => { elem.selected = schedule.Users.find((user) => { return user.UserId === elem.Id; }) !== undefined; });
+		this.setScheduleOptions(schedule);
         this.updateSchedule(schedule.Id, row); 
     }
 
@@ -599,7 +539,9 @@ class TasksController {
                 frequencies: [
                     { id: 0, value: "Daily" }, 
                     { id: 1, value: "Weekly" }, 
-                    { id: 2, value: "Monthly" }
+					{ id: 2, value: "Monthly" },
+					{ id: 3, value: "Quarterly" },
+					{ id: 4, value: "Yearly" }
                 ],
                 frequency: "0",
                 everyNs: [
@@ -858,7 +800,7 @@ class TasksController {
                     </select>
                 </div>
                 <div class="col-sm-4" style="padding-top: 6px; padding-left: 0px;">
-                    {{ $ctrl.scheduleOptions.frequency === '0' ? 'Day(s)' : ($ctrl.scheduleOptions.frequency === '1' ? 'Week(s)' : 'Month(s)') }}
+                    {{ $ctrl.scheduleOptions.frequency === '0' ? 'Day(s)' : ($ctrl.scheduleOptions.frequency === '1' ? 'Week(s)' : ($ctrl.scheduleOptions.frequency === '2' ? 'Month(s)' : ($ctrl.scheduleOptions.frequency === '3' ? 'Quarter(s)' : 'Year(s)'))) }}
                 </div>
             </div>
             <div class="form-group" ng-show="$ctrl.scheduleOptions.frequency == 2">
@@ -869,7 +811,7 @@ class TasksController {
                     </select>
                 </div>
             </div>
-            <div class="form-group" ng-show="$ctrl.scheduleOptions.frequency > 0 && !($ctrl.scheduleOptions.frequency == 2 && $ctrl.scheduleOptions.onWeek == 6)">
+            <div class="form-group" ng-show="$ctrl.scheduleOptions.frequency > 0 && $ctrl.scheduleOptions.frequency < 3 && !($ctrl.scheduleOptions.frequency == 2 && $ctrl.scheduleOptions.onWeek == 6)">
                 <label class="col-sm-3 control-label">On Days:</label>
                 <div class="col-sm-8">
                     <span ng-repeat="dayOfWeek in $ctrl.scheduleOptions.daysOfWeek">
@@ -880,7 +822,7 @@ class TasksController {
                     </span>
                 </div>
             </div>
-            <div class="form-group` + (updateId ? ` ng-hide` : ``) + `">
+            <div class="form-group">
                 <label class="col-sm-3 control-label">Starts On:</label>
                 <div class="col-sm-4">
                     <datepicker model="$ctrl.scheduleOptions.startsOnDate" id="new_schedule_starts_on" format="MM/dd/yyyy"></datepicker>
@@ -1042,7 +984,48 @@ class TasksController {
             this.DialogService.error(error);
         })
         .finally(() => this.working = "")
-    }
+	}
+
+	setScheduleOptions(schedule) {
+		this.scheduleOptions.Active = schedule.Active;
+		this.scheduleOptions.asEarlyAsN = schedule.AsEarlyAsN || "";
+		this.scheduleOptions.asEarlyAsFrequency = "";
+
+		switch (schedule.AsEarlyAsFrequency) {
+			case "Minute(s)": this.scheduleOptions.asEarlyAsFrequency = "0"; break;
+			case "Hour(s)": this.scheduleOptions.asEarlyAsFrequency = "1"; break;
+			case "Day(s)": this.scheduleOptions.asEarlyAsFrequency = "2"; break;
+			case "Week(s)": this.scheduleOptions.asEarlyAsFrequency = "3"; break;
+			case "Month(s)": this.scheduleOptions.asEarlyAsFrequency = "4"; break;
+		}
+
+		this.scheduleOptions.time = schedule.AnyTime ? "any" : "time";
+		this.scheduleOptions.name = schedule.Name;
+		this.scheduleOptions.endsOn = schedule.EndsOn ? "date" : "occurrence";
+		this.scheduleOptions.endsAfter = schedule.EndsAfter;
+		this.scheduleOptions.endsOnDate = moment(schedule.EndsOn).toDate();
+		this.scheduleOptions.everyN = schedule.EveryN.toString();
+
+		switch (schedule.Frequency) {
+			case "Daily": this.scheduleOptions.frequency = "0"; break;
+			case "Weekly": this.scheduleOptions.frequency = "1"; break;
+			case "Monthly": this.scheduleOptions.frequency = "2"; break;
+			case "Quarterly": this.scheduleOptions.frequency = "3"; break;
+			case "Yearly": this.scheduleOptions.frequency = "4"; break;
+		}
+
+		this.scheduleOptions.onWeek = schedule.OnWeek ? schedule.OnWeek.toString() : null;
+		this.scheduleOptions.daysOfWeek[0].selected = schedule.OnSunday;
+		this.scheduleOptions.daysOfWeek[1].selected = schedule.OnMonday;
+		this.scheduleOptions.daysOfWeek[2].selected = schedule.OnTuesday;
+		this.scheduleOptions.daysOfWeek[3].selected = schedule.OnWednesday;
+		this.scheduleOptions.daysOfWeek[4].selected = schedule.OnThursday;
+		this.scheduleOptions.daysOfWeek[5].selected = schedule.OnFriday;
+		this.scheduleOptions.daysOfWeek[6].selected = schedule.OnSaturday;
+		this.scheduleOptions.startsOnDate = schedule.StartsOn ? moment(schedule.StartsOn).toDate() : moment().toDate();
+		this.scheduleOptions.assets.forEach((elem) => { elem.selected = schedule.Assets.find((asset) => { return asset.AssetId === elem.Id; }) !== undefined; });
+		this.scheduleOptions.users.forEach((elem) => { elem.selected = schedule.Users.find((user) => { return user.UserId === elem.Id; }) !== undefined; });
+	}
 
     validateDow(id) {
         if (!this.scheduleOptions.daysOfWeek.some(function (e) { return e.id != id && e.selected })) {

@@ -56,13 +56,19 @@ namespace Altask.www {
 
                         if (count != _lastCount) {
                             _lastCount = count;
-                            _tasks = _context.Tasks.AsNoTracking().Where(t => t.Alerts.Any(ta => ta.Active))
+                            _tasks = _context.Tasks.AsNoTracking().Where(t => t.Schedules.Any(s => s.Active))
                                 .Include(e => e.Alerts)
                                 .Include(e => e.Schedules)
                                 .ToList();
                         }
 
                         foreach (var task in _tasks) {
+                            if (task.Id == 20097)
+                            {
+                                var s = "";
+                                Debug.Print(s);
+                            }
+
                             if (!task.Active) {
                                 continue;
                             }
@@ -128,6 +134,10 @@ namespace Altask.www {
                         }
                     }
                 }
+                catch (ThreadAbortException)
+                {
+                    Run();
+                }
                 catch (ObjectDisposedException) {
                     _errorCount++;
 
@@ -159,7 +169,8 @@ namespace Altask.www {
                 FormModel = instance.FormModel,
                 ScheduleId = instance.ScheduleId,
                 TaskId = instance.TaskId,
-                UserId = instance.UserId
+                UserId = instance.UserId,
+                TimeSpent = 0
             };
 
             occurrence.Logs.Add(new OccurrenceLog() { Type = "Created" });

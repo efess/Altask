@@ -1,0 +1,115 @@
+﻿<div page-loading="$ctrl.working" pl-message="$ctrl.working">
+</div>
+<div class="forms-view-container x3-view-container container-fluid">
+    <div class="row">
+        <div class="col-lg-5 well-2-right">
+            <div class="col-md-12 col-no-pad-left col-no-pad-right">
+                <div class="well">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Forms</legend>
+                            <table id="forms" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Active</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 col-no-pad-left col-no-pad-right">
+                <div class="well">
+                    <fieldset>
+                        <legend>Detail</legend>
+                        <form class="form-horizontal">
+                            <div class="alert alert-danger" role="alert" ng-show="!$ctrl.isValid()">
+                                <h4 class="alert-heading">Errors</h4>
+                                <p>The following errors must be addressed before the form can be saved!</p>
+                                <hr>
+                                <p class="mb-0" ng-repeat="x in $ctrl.errors">&bull; {{x.error}}</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Active:</label>
+                                <div class="col-sm-9 btn-group" role="group">
+                                    <button type="button" class="btn btn-default btn-yes-no" ng-class="$ctrl.copiedForm.Active ? 'active' : ''" ng-click="$ctrl.copiedForm.Active = true; $ctrl.markDirty()" ng-disabled="!$ctrl.isRowSelected()">Yes</button>
+                                    <button type="button" class="btn btn-default btn-yes-no" ng-class="!$ctrl.copiedForm.Active ? 'active' : ''" ng-click="$ctrl.copiedForm.Active = false; $ctrl.markDirty()" ng-disabled="!$ctrl.isRowSelected()">No</button>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-sm-3">Name:</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type="text" ng-change="$ctrl.markDirty()" ng-model="$ctrl.copiedForm.Name" ng-disabled="!$ctrl.isRowSelected()" req-data="Name" rd-errors="$ctrl.errors" unq-name un-err-model="$ctrl.errors" un-items="$ctrl.forms" un-org-name="{{$ctrl.selectedForm.Name}}" />
+                                    <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Description:</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" type="text" ng-change="$ctrl.markDirty()" ng-model="$ctrl.copiedForm.Description" ng-disabled="!$ctrl.isRowSelected()"></textarea>
+                                </div>
+                            </div>
+                            <div class="panel panel-default panel-metadata">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Custom Properties</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-metadata">
+                                        <thead>
+                                            <tr>
+                                                <th>Property</th>
+                                                <th>Value</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="x in $ctrl.copiedForm.Metadata.Properties">
+                                                <td class="form-group has-feedback">
+                                                    <input class="form-control" data-property-part="name" type="text" disabled value="{{x.Name}}" />
+                                                    <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                                                </td>
+                                                <td class="form-group has-feedback">
+                                                    <input class="form-control" type="text" value="{{x.Value}}" req-data="Custom property value" rd-selector="td" rd-errors="$ctrl.errors" rd-change="$ctrl.markDirty()" />
+                                                    <span class="form-control-feedback glyphicon glyphicon-remove"></span>
+                                                </td>
+                                                <td class="remove-metadata-property">
+                                                    <span uib-tooltip="Remove Custom Property" ng-click="$ctrl.removeCustomProperty($event)" ng-disabled="!$ctrl.isRowSelected()"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer text-right">
+                                    <button uib-tooltip="Add Custom Property......" ng-click="$ctrl.addCustomProperty()" ng-disabled="!$ctrl.isRowSelected()" class="btn btn-primary"><i class="fa fa-plus fa-sm" aria-hidden="true"></i>Add</button>
+                                </div>
+                            </div>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 well-2-left">
+            <div class="col-md-12 col-no-pad-left col-no-pad-right">
+                <div class="well form-builder-container">
+                    <form class="form form-builder">
+                        <fieldset>
+                            <legend>Form Builder</legend>
+                        </fieldset>
+                        <div class="alert alert-info alert-publish" role="alert" ng-show="$ctrl.isRowSelected() && $ctrl.hasFormChanged()">
+                            <h4 class="alert-heading">Attention!</h4>
+                            <hr>
+
+                            <div>
+                                <span>The current draft of this form has not been published.</span>
+                                <p class="btn btn-primary" ng-click="$ctrl.publish()">Publish</p>
+                            </div>
+                        </div>
+                        <form-builder fb-model="$ctrl.copiedForm.DraftModel" fb-on-save="$ctrl.saveForm(formBuilderModel)" fb-on-dirty="$ctrl.markDirty()" fb-on-discard="$ctrl.discard()" fb-parent-dirty="$ctrl.dirty"></form-builder>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

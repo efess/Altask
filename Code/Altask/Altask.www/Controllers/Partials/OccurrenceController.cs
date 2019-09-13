@@ -511,6 +511,7 @@
                     occurrenceEntity.Started = true;
                     occurrenceEntity.StartedBy = startedByEntity.UserName;
                     occurrenceEntity.StartedOn = DateTime.Now;
+                    occurrenceEntity.TimeSpent = 0;
                     occurrenceEntity.Logs.Add(new Data.Model.OccurrenceLog() { Type = "Started" });
                     Context.Entry(occurrenceEntity).State = EntityState.Modified;
                     var result = await Context.SaveChangesAsync();

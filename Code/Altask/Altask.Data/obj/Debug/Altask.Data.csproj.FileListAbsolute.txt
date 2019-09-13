@@ -61,10 +61,10 @@ C:\Code\Altask\Altask.Data\bin\Debug\EntityFramework.xml
 C:\Code\Altask\Altask.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Code\Altask\Altask.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Code\Altask\Altask.Data\bin\Debug\Newtonsoft.Json.xml
-C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.csprojAssemblyReference.cache
 C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.Model.EntityResources.resources
 C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.csproj.GenerateResource.cache
 C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.csproj.CoreCompileInputs.cache
 C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.csproj.CopyComplete
 C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.dll
 C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.pdb
+C:\Code\Altask\Altask.Data\obj\Debug\Altask.Data.csprojAssemblyReference.cache

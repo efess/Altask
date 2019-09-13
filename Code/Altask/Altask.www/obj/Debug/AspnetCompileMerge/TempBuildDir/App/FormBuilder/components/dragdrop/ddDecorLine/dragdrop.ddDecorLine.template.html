@@ -1,0 +1,32 @@
+<div>
+    <button uib-tooltip="Remove Line" ng-click="removeLineClick($event)"
+            type="button"
+            class="btn btn-danger btn-remove-line">
+        <span class="glyphicon glyphicon-trash"
+              aria-hidden="true">
+        </span>
+    </button>
+    <button uib-tooltip="Move Line Up" ng-click="lineUpClick($event)"
+            type="button"
+            class="btn btn-primary btn-line-up">
+        <span class="glyphicon glyphicon-chevron-up"
+              aria-hidden="true">
+        </span>
+    </button>
+    <button uib-tooltip="Move Line Down" ng-click="lineDownClick($event)"
+            type="button"
+            class="btn btn-primary btn-line-down">
+        <span class="glyphicon glyphicon-chevron-down"
+              aria-hidden="true">
+        </span>
+    </button>
+    <button uib-tooltip="Insert Line Above" ng-click="insertLineClick($event)"
+            type="button"
+            class="btn btn-primary btn-insert-line">
+        <span class="glyphicon glyphicon-plus"
+              aria-hidden="true">
+        </span>
+    </button>
+
+    <div id="lineDirectiveTranscludeHere"></div>
+</div>

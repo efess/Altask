@@ -1,0 +1,14 @@
+<div ng-click="ddDecorContainerController.collapseFct()">
+    <h6 ng-show="ddDecorContainerController.config.isEnabled"
+        class="ddDecorContainerController.isCollapsableZone"
+        style="cursor:pointer">
+        <button uib-tooltip="{{ddDecorContainerController.currentToolTip()}}" class="btn btn-primary btn-xs">
+            <span class="{{ddDecorContainerController.currentIconClass()}}"></span>
+        </button>
+        &nbsp;
+        {{ddDecorContainerController.currentTitle}}
+    </h6>
+</div>
+<div uib-collapse="ddDecorContainerController.isCollapsed">
+    <div id="ddDecorContainerWillTranscludeHere"></div>
+</div>

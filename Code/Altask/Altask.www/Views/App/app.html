@@ -38,6 +38,7 @@
                     </ul>
                 </li>
                 <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['forms'])}"><a ui-sref="forms">Forms</a></li>
+                <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['reports'])}"><a ui-sref="reports">Reports</a></li>
                 <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['departments', 'manufacturers', 'servicesPanel', 'users'])}" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">System <span class="caret"></span></a>
                     <ul class="dropdown-menu">

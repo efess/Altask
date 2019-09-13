@@ -1,74 +1,77 @@
-﻿import {app} from "./app.component";
-import {assetGroups} from "./Asset/assetGroups.component";
-import {assetLogTypeCategories} from "./Asset/assetLogTypeCategories.component";
-import {assetLogTypes} from "./Asset/assetLogTypes.component";
-import {assets} from "./Asset/assets.component";
-import {assetTypes} from "./Asset/assetTypes.component";
-import {datepicker} from "./Directives/datepicker.directive";
-import {departments} from "./System/departments.component";
-import {forms} from "./Form/forms.component";
-import {home} from "./home.component";
-import {login} from "./Account/login.component";
-import {manufacturers} from "./System/manufacturers.component";
-import {pageLoading} from "./Directives/pageLoading.directive";
-import {reqData} from "./Directives/reqData.directive";
-import {resizable} from "./Directives/resizable.directive";
-import {schedule} from "./Directives/schedule.directive";
-import {servicesPanel} from "./System/servicesPanel.component";
-import {taskCategories} from "./Task/taskCategories.component";
-import {tasks} from "./Task/tasks.component";
-import {unqName} from "./Directives/unqName.directive";
-import {users} from "./User/users.component";
-import {settings} from "./System/settings.component";
+﻿import { app } from "./app.component";
+import { assetGroups } from "./Asset/assetGroups.component";
+import { assetLogTypeCategories } from "./Asset/assetLogTypeCategories.component";
+import { assetLogTypes } from "./Asset/assetLogTypes.component";
+import { assets } from "./Asset/assets.component";
+import { assetTypes } from "./Asset/assetTypes.component";
+import { datepicker } from "./Directives/datepicker.directive";
+import { departments } from "./System/departments.component";
+import { forms } from "./Form/forms.component";
+import { home } from "./home.component";
+import { login } from "./Account/login.component";
+import { manufacturers } from "./System/manufacturers.component";
+import { pageLoading } from "./Directives/pageLoading.directive";
+import { reqData } from "./Directives/reqData.directive";
+import { resizable } from "./Directives/resizable.directive";
+import { schedule } from "./Directives/schedule.directive";
+import { servicesPanel } from "./System/servicesPanel.component";
+import { taskCategories } from "./Task/taskCategories.component";
+import { tasks } from "./Task/tasks.component";
+import { unqName } from "./Directives/unqName.directive";
+import { users } from "./User/users.component";
+import { settings } from "./System/settings.component";
+import { reports } from "./Report/reports.component";
 
 import {
-    appState,
-    assetGroupsState,
-    assetLogTypeCategoriesState,
-    assetLogTypesState,
-    assetsState,
-    assetTypesState,
-    departmentsState,
-    formsState,
-    homeState,
-    loginState,
-    manufacturersState,
-    servicesPanelState,
-    taskCategoriesState,
-    tasksState,
-    usersState,
-    settingsState
+	appState,
+	assetGroupsState,
+	assetLogTypeCategoriesState,
+	assetLogTypesState,
+	assetsState,
+	assetTypesState,
+	departmentsState,
+	formsState,
+	homeState,
+	loginState,
+	manufacturersState,
+	servicesPanelState,
+	taskCategoriesState,
+	tasksState,
+	usersState,
+	settingsState,
+	reportsState
 } from "./app.states";
 
 export const MAIN_MODULE = angular.module("main", []);
 
-MAIN_MODULE.config(["$uiRouterProvider", function($uiRouter, formlyConfig) {
-    // Enable tracing of each TRANSITION... (check the javascript console)
-    // This syntax `$trace.enable(1)` is an alternative to `$trace.enable("TRANSITION")`.
-    // Besides "TRANSITION", you can also enable tracing for : "RESOLVE", "HOOK", "INVOKE", "UIVIEW", "VIEWCONFIG"
-    $uiRouter.trace.enable(1);
+MAIN_MODULE.config(["$uiRouterProvider", function ($uiRouter, formlyConfig) {
+	// Enable tracing of each TRANSITION... (check the javascript console)
+	// This syntax `$trace.enable(1)` is an alternative to `$trace.enable("TRANSITION")`.
+	// Besides "TRANSITION", you can also enable tracing for : "RESOLVE", "HOOK", "INVOKE", "UIVIEW", "VIEWCONFIG"
+	$uiRouter.trace.enable(1);
 
-    // If the user enters a URL that doesn"t match any known URL (state), send them to `/home`
-    const $urlService = $uiRouter.urlService;
-    $urlService.rules.otherwise({ state: "login" });
+	// If the user enters a URL that doesn"t match any known URL (state), send them to `/home`
+	const $urlService = $uiRouter.urlService;
+	$urlService.rules.otherwise({ state: "login" });
 
-    const $stateRegistry = $uiRouter.stateRegistry;
-    $stateRegistry.register(appState);
-    $stateRegistry.register(assetGroupsState);
-    $stateRegistry.register(assetLogTypeCategoriesState);
-    $stateRegistry.register(assetLogTypesState);
-    $stateRegistry.register(assetsState);
-    $stateRegistry.register(assetTypesState);
-    $stateRegistry.register(departmentsState);
-    $stateRegistry.register(formsState);
-    $stateRegistry.register(homeState);
-    $stateRegistry.register(loginState);
-    $stateRegistry.register(manufacturersState);
-    $stateRegistry.register(servicesPanelState);
-    $stateRegistry.register(taskCategoriesState);
-    $stateRegistry.register(tasksState);
-    $stateRegistry.register(usersState);
-    $stateRegistry.register(settingsState);
+	const $stateRegistry = $uiRouter.stateRegistry;
+	$stateRegistry.register(appState);
+	$stateRegistry.register(assetGroupsState);
+	$stateRegistry.register(assetLogTypeCategoriesState);
+	$stateRegistry.register(assetLogTypesState);
+	$stateRegistry.register(assetsState);
+	$stateRegistry.register(assetTypesState);
+	$stateRegistry.register(departmentsState);
+	$stateRegistry.register(formsState);
+	$stateRegistry.register(homeState);
+	$stateRegistry.register(loginState);
+	$stateRegistry.register(manufacturersState);
+	$stateRegistry.register(servicesPanelState);
+	$stateRegistry.register(taskCategoriesState);
+	$stateRegistry.register(tasksState);
+	$stateRegistry.register(usersState);
+	$stateRegistry.register(settingsState);
+	$stateRegistry.register(reportsState);
 }]);
 
 MAIN_MODULE.component("app", app);
@@ -87,6 +90,7 @@ MAIN_MODULE.component("taskCategories", taskCategories);
 MAIN_MODULE.component("tasks", tasks);
 MAIN_MODULE.component("users", users);
 MAIN_MODULE.component("settings", settings);
+MAIN_MODULE.component("reports", reports);
 
 MAIN_MODULE.directive("datepicker", datepicker);
 MAIN_MODULE.directive("pageLoading", pageLoading);
