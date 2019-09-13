@@ -3,7 +3,22 @@
     src: url('../fonts/fontawesome-webfont.eot'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.woff');
 }
 
-.uib-tab.active > div > uib-tab-heading > span {
+input[type=checkbox], input[type=radio] {
+    margin: 0;
+    height: 20px;
+    width: 20px;
+}
+
+.checkbox label, .radio label {
+    min-height: 20px;
+    padding-left: 26px;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    margin-left: -26px;
+}
+
+    .uib-tab.active > div > uib-tab-heading > span {
     color: #0d87e9 !important;
 }
 
@@ -25,18 +40,18 @@
     width: 100% !important;
 }
 
-.dataTables_scrollHeadInner table {
-    width: 100% !important;
-}
+    .dataTables_scrollHeadInner table {
+        width: 100% !important;
+    }
 
 .options-row-btn {
     width: 36px;
 }
 
-.options-row-btn i {
-    margin-left: -4px !important;
-    margin-top: -3px !important;
-}
+    .options-row-btn i {
+        margin-left: -4px !important;
+        margin-top: -3px !important;
+    }
 
 .form-builder-save-box {
     padding-top: 10px;
@@ -128,6 +143,17 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
         display: block !important;
     }
 }
+
+    .multiselect-parent,
+    [ng-dropdown-multiselect] button {
+        width: 100%;
+        text-align: left;
+    }
+
+        [ng-dropdown-multiselect] button .caret {
+            float: right;
+            margin-top: 9px;
+        }
 
 .dropdown-menu li a {
     cursor: pointer;

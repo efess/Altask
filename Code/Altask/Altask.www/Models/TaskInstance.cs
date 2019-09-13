@@ -190,7 +190,7 @@ namespace Altask.www.Models {
 			var instance = TaskInstance.Create(task, null, null, date);
             instance.AnyTime = schedule.AnyTime.GetValueOrDefault(false);
 
-            if (!instance.AnyTime && schedule.AsEarlyAsN.HasValue) {
+            if (schedule.AsEarlyAsN.HasValue) {
 				switch (schedule.AsEarlyAsFrequency) {
 					case "Minute(s)":
 					instance.AsEarlyAsDate = date.AddMinutes(-(double)schedule.AsEarlyAsN);

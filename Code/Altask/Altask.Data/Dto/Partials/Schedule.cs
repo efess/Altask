@@ -59,7 +59,7 @@ namespace Altask.Data.Dto {
                             dates.Add(date);
                         }
 
-                        occurrence = occurrence + 1;
+                        occurrence++;
                         date = date.AddDays(EveryN.Value);
                     }
 
@@ -90,7 +90,7 @@ namespace Altask.Data.Dto {
                             var dayIndex = DateTime.DaysInMonth(date.Year, date.Month);
                             var lastWorkingDayOfMonth = new DateTime(date.Year, date.Month, dayIndex);
 
-                            while(dayIndex > 0) {
+                            while (dayIndex > 0) {
                                 var dayOfMonth = new DateTime(date.Year, date.Month, dayIndex);
 
                                 if (dayOfMonth.DayOfWeek == DayOfWeek.Sunday || dayOfMonth.DayOfWeek == DayOfWeek.Saturday) {
@@ -127,6 +127,81 @@ namespace Altask.Data.Dto {
                                 date = date.AddDays(1);
                             }
                         }
+                    }
+
+                    break;
+
+                case "Quarterly":
+                    Action addQuarter = delegate ()
+                    {
+                        if (date.Month >= 1 && date.Month < 4)
+                        {
+                            date = new DateTime(date.Year, 4, 1);
+                        }
+                        else if (date.Month >= 4 && date.Month < 7)
+                        {
+                            date = new DateTime(date.Year, 7, 1);
+                        }
+                        else if (date.Month >= 7 && date.Month < 9)
+                        {
+                            date = new DateTime(date.Year, 9, 1);
+                        }
+                        else if (date.Month >= 9)
+                        {
+                            date = new DateTime(date.Year + 1, 1, 1);
+                        }
+                    };
+
+
+                    if (date.Month > 1 && date.Month < 4)
+                    {
+                        date = new DateTime(date.Year, 1, 1);
+                    } else if (date.Month > 4 && date.Month < 7)
+                    {
+                        date = new DateTime(date.Year, 4, 1);
+                    } else if (date.Month > 7 && date.Month < 9)
+                    {
+                        date = new DateTime(date.Year, 7, 1);
+                    } else if (date.Month > 9)
+                    {
+                        date = new DateTime(date.Year, 9, 1);
+                    }
+
+                    while (date < StartsOn) {
+                        addQuarter();
+                    }
+
+
+                    while (occurrence < endsAfter || date <= endsOnDate)
+                    {
+                        if (inWindow(date))
+                        {
+                            dates.Add(date);  
+                        }
+
+                        occurrence++;
+                        addQuarter();
+                    }
+
+                    break;
+
+                case "Yearly":
+                    date = new DateTime(date.Year, 1, 1);
+
+                    while(date < StartsOn)
+                    {
+                        date = date.AddYears(1);
+                    }
+
+                    while (occurrence < endsAfter || date <= endsOnDate)
+                    {
+                        if (inWindow(date))
+                        {  
+                            dates.Add(date);   
+                        }
+
+                        occurrence++;
+                        date = date.AddYears(1);
                     }
 
                     break;

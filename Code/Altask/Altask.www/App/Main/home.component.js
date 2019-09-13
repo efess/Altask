@@ -124,7 +124,7 @@ class HomeController {
         };
 
         let assetTab = {
-            id: this.settings.tabs.length,
+            id: id,
             caption: "Asset Tasks",
             calendar: {
                 view: "month",
@@ -554,6 +554,7 @@ class HomeController {
 
         angular.forEach(tasks, (task) => {
             if (this.showEvent(task)) {
+                console.log("Event pushed");
                 this.events.push(this.eventFromTask({ id: this.createUniqueId(task) }, task));
             }
         });
@@ -629,6 +630,28 @@ class HomeController {
                 events: {
                     onSelectionChanged: () => {
                         this.settings.activeTab().filters.bModel = this.assetTab.filterB.model;
+                        this.saveSettings();
+                        (this.calendar()).fullCalendar('refetchEvents');
+                    }
+                },
+                model: [],
+                settings: {
+                    clearSearchOnClose: true,
+                    enableSearch: true,
+                    searchField: "label",
+                    idProperty: "id",
+                    smartButtonMaxItems: 5,
+                    scrollable: true,
+                },
+            },
+            filterC: {
+                customText: {
+                    buttonDefaultText: 'Status',
+                },
+                data: [{ id: 2, label: "Past Due" }, { id: 3, label: "Due Today" }, { id: 4, label: "Complete" }, { id: 5, label: "In Progress" }],
+                events: {
+                    onSelectionChanged: () => {
+                        this.settings.activeTab().filters.cModel = this.assetTab.filterC.model;
                         this.saveSettings();
                         (this.calendar()).fullCalendar('refetchEvents');
                     }

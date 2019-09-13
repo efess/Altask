@@ -75,6 +75,10 @@ namespace Altask.www {
                         Thread.Sleep(1000 * Settings.AssetAlertServiceThrottle);
                     }
                 }
+                catch (ThreadAbortException)
+                {
+                    Run();
+                }
                 catch (Exception ex) {
                     EventLog.WriteEntry(Settings.EventLogSource, string.Format("The Alert Service encountered the following error: {0}\n\n{1}", ex.Message, ex.StackTrace), EventLogEntryType.Error);
                     _errorCount++;

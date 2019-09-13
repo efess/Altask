@@ -25,13 +25,13 @@ C:\Code\Altask\Altask.Data\bin\Release\EntityFramework.xml
 C:\Code\Altask\Altask.Data\bin\Release\EntityFramework.SqlServer.xml
 C:\Code\Altask\Altask.Data\bin\Release\Microsoft.AspNet.Identity.Core.xml
 C:\Code\Altask\Altask.Data\bin\Release\Newtonsoft.Json.xml
-C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.csprojAssemblyReference.cache
 C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.Model.EntityResources.resources
 C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.csproj.GenerateResource.cache
 C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.csproj.CoreCompileInputs.cache
 C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.csproj.CopyComplete
 C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.dll
 C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.pdb
+<<<<<<< HEAD
 C:\source\Altask\Code\Altask\Altask.Data\bin\Release\Altask.Data.dll.config
 C:\source\Altask\Code\Altask\Altask.Data\bin\Release\Altask.Data.dll
 C:\source\Altask\Code\Altask\Altask.Data\bin\Release\Altask.Data.pdb
@@ -50,3 +50,6 @@ C:\source\Altask\Code\Altask\Altask.Data\obj\Release\Altask.Data.csproj.CoreComp
 C:\source\Altask\Code\Altask\Altask.Data\obj\Release\Altask.Data.csproj.CopyComplete
 C:\source\Altask\Code\Altask\Altask.Data\obj\Release\Altask.Data.dll
 C:\source\Altask\Code\Altask\Altask.Data\obj\Release\Altask.Data.pdb
+=======
+C:\Code\Altask\Altask.Data\obj\Release\Altask.Data.csprojAssemblyReference.cache
+>>>>>>> master

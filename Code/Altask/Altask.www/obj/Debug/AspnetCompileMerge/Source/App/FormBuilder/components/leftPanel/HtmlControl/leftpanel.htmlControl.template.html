@@ -1,0 +1,31 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 edit-properties-header"><h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit Properties:</h5></div>
+        </div>
+        <div class="marginTopFivepixels"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>This control allows you to insert raw HTML content into your form. The HTML will not be validated or acted on by the form.</p>
+            </div>
+        </div>
+        <div class="marginTopFivepixels"></div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label for="inputTextLabelUpdate"
+                           class="control-label greyText editPropertiesLabel">
+                        Html:
+                    </label>
+                    <div class="">
+                        <textarea class="form-control"
+                                  ng-model="leftPanelController.fieldModel.temporyConfig.formlyLabel"
+                                  id="htmlLabelUpdate"
+                                  placeholder="Add / edit control HTML here" rows="20"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <left-panel-valid-edit-footer />
+</div>

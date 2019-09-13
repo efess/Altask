@@ -1,0 +1,46 @@
+﻿<div page-loading="$ctrl.working" pl-message="$ctrl.working">
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <fieldset>
+                    <legend>Report</legend>
+                    <form class="form-horizontal">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <select class="form-control col-sm-5" ng-model="$ctrl.selected" ng-options="report.name as report.description for report in $ctrl.reports"></select>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-primary" ng-click="$ctrl.runReport()">Run Report</button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="$ctrl.selected && $ctrl.selected.parameters.length > 0">
+        <div class="col-md-12">
+            <div class="well">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Parameters</legend>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="$ctrl.showResults">
+        <div class="col-md-12">
+            <div class="well">
+                <fieldset>
+                    <legend>Results</legend>
+                    <table id="results" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

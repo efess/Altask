@@ -374,6 +374,7 @@
     <Compile Include="Controllers\Partials\ScheduleController.cs" />
     <Compile Include="Controllers\Partials\TaskController.cs" />
     <Compile Include="Controllers\Partials\UserController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleController.cs">
       <DependentUpon>EntityControllers.tt</DependentUpon>
     </Compile>
@@ -680,6 +681,7 @@
     <Content Include="App\Global\Partials\occurrence.service.js" />
     <Content Include="App\Global\Partials\schedule.service.js" />
     <Content Include="App\Global\Partials\user.service.js" />
+    <Content Include="App\Global\report.service.js" />
     <Content Include="App\Global\role.service.js">
       <DependentUpon>entities.services.tt</DependentUpon>
     </Content>
@@ -739,6 +741,7 @@
     <Content Include="App\Main\Directives\unqName.directive.js" />
     <Content Include="App\Main\Directives\resizable.directive.js" />
     <Content Include="App\Main\Form\forms.component.js" />
+    <Content Include="App\Main\Report\reports.component.js" />
     <Content Include="App\Main\System\departments.component.js" />
     <Content Include="App\Main\System\manufacturers.component.js" />
     <Content Include="App\Main\System\servicesPanel.component.js" />
@@ -1059,6 +1062,7 @@
     <Content Include="Views\Asset\logTypes.html" />
     <Content Include="Views\Asset\types.html" />
     <Content Include="Views\Form\forms.html" />
+    <Content Include="Views\Report\reports.html" />
     <Content Include="Views\System\departments.html" />
     <Content Include="Views\System\manufacturers.html" />
     <Content Include="Views\System\servicesPanel.html" />
