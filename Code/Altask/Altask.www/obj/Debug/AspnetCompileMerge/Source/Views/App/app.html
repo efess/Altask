@@ -52,7 +52,6 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-<li><p class="navbar-text" style="color: red; font-weight: 600;">Under Evaluation!</p></li>
                 <li ng-show="::$ctrl.canCreateTask"><a uib-tooltip="Create and assign a task" tooltip-append-to-body="true" tooltip-placement="auto top" ng-click="$ctrl.newTask()"><i class="fa fa-plus-square" aria-hidden="true"></i>New Task</a></li>
                 <li ng-show="::$ctrl.canLog"><a uib-tooltip="Log a note or record an issue against an asset" tooltip-append-to-body="true" tooltip-placement="auto top" ng-click="$ctrl.log()"><i class="fa fa-commenting-o" aria-hidden="true"></i>Log...</a></li>
                 <li class="dropdown">

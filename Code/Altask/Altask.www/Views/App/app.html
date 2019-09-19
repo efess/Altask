@@ -13,19 +13,19 @@
         </div>
         <div class="collapse navbar-collapse" id="main_menu">
             <ul class="nav navbar-nav">
-                <li ng-class="{ active: $ctrl.isActive(['home'])}"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
-                <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['assets', 'assetTypes', 'assetLogTypes'])}" class="dropdown">
+                <li ng-class="{ active: $ctrl.isActive(['home'])}"><a ui-sref="home"  data-toggle="collapse" data-target=".navbar-collapse">Home <span class="sr-only">(current)</span></a></li>
+                <li ng-show="::$ctrl.inRole('Administrator')"   ng-class="{ active: $ctrl.isActive(['assets', 'assetTypes', 'assetLogTypes'])}" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assets <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ui-sref="assets">View Assets...</a></li>
-                        <li><a ui-sref="assetGroups">Asset Groups...</a></li>
-                        <li><a ui-sref="assetTypes">Asset Types...</a></li>
+                        <li><a ui-sref="assets" data-toggle="collapse" data-target=".navbar-collapse">View Assets...</a></li>
+                        <li><a ui-sref="assetGroups" data-toggle="collapse" data-target=".navbar-collapse">Asset Groups...</a></li>
+                        <li><a ui-sref="assetTypes" data-toggle="collapse" data-target=".navbar-collapse">Asset Types...</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-submenu">
                             <a>Asset Logging</a>
                             <ul class="dropdown-menu">
-                                <li><a ui-sref="assetLogTypeCategories">Log Categories...</a></li>
-                                <li><a ui-sref="assetLogTypes">Log Types...</a></li>
+                                <li><a ui-sref="assetLogTypeCategories" data-toggle="collapse" data-target=".navbar-collapse">Log Categories...</a></li>
+                                <li><a ui-sref="assetLogTypes" data-toggle="collapse" data-target=".navbar-collapse">Log Types...</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -33,29 +33,28 @@
                 <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['tasks', 'taskCategories'])}" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tasks <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ui-sref="tasks">View Tasks...</a></li>
-                        <li><a ui-sref="taskCategories">Task Categories</a></li>
+                        <li><a ui-sref="tasks" data-toggle="collapse" data-target=".navbar-collapse">View Tasks...</a></li>
+                        <li><a ui-sref="taskCategories" data-toggle="collapse" data-target=".navbar-collapse">Task Categories</a></li>
                     </ul>
                 </li>
-                <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['forms'])}"><a ui-sref="forms">Forms</a></li>
-                <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['reports'])}"><a ui-sref="reports">Reports</a></li>
+                <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['forms'])}"><a ui-sref="forms"  data-toggle="collapse" data-target=".navbar-collapse">Forms</a></li>
+                <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['reports'])}"><a ui-sref="reports" data-toggle="collapse" data-target=".navbar-collapse">Reports</a></li>
                 <li ng-show="::$ctrl.inRole('Administrator')" ng-class="{ active: $ctrl.isActive(['departments', 'manufacturers', 'servicesPanel', 'users'])}" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">System <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ui-sref="departments">Departments...</a></li>
-                        <li><a ui-sref="manufacturers">Manufacturers...</a></li>
-                        <li><a ui-sref="users">Users...</a></li>
+                        <li><a ui-sref="departments" data-toggle="collapse" data-target=".navbar-collapse">Departments...</a></li>
+                        <li><a ui-sref="manufacturers" data-toggle="collapse" data-target=".navbar-collapse">Manufacturers...</a></li>
+                        <li><a ui-sref="users" data-toggle="collapse" data-target=".navbar-collapse">Users...</a></li>
                         <li class="divider"></li>
-                        <li><a ui-sref="settings">Settings...</a></li>
+                        <li><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse">Settings...</a></li>
                         <li class="divider"></li>
-                        <li><a ui-sref="servicesPanel">Services Panel...</a></li>
+                        <li><a ui-sref="servicesPanel" data-toggle="collapse" data-target=".navbar-collapse">Services Panel...</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-<li><p class="navbar-text" style="color: red; font-weight: 600;">Under Evaluation!</p></li>
-                <li ng-show="::$ctrl.canCreateTask"><a uib-tooltip="Create and assign a task" tooltip-append-to-body="true" tooltip-placement="auto top" ng-click="$ctrl.newTask()"><i class="fa fa-plus-square" aria-hidden="true"></i>New Task</a></li>
-                <li ng-show="::$ctrl.canLog"><a uib-tooltip="Log a note or record an issue against an asset" tooltip-append-to-body="true" tooltip-placement="auto top" ng-click="$ctrl.log()"><i class="fa fa-commenting-o" aria-hidden="true"></i>Log...</a></li>
+                <li ng-show="::$ctrl.canCreateTask"><a uib-tooltip="Create and assign a task" tooltip-append-to-body="true" tooltip-placement="auto top" ng-click="$ctrl.newTask()" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-plus-square" aria-hidden="true"></i>New Task</a></li>
+                <li ng-show="::$ctrl.canLog"><a uib-tooltip="Log a note or record an issue against an asset" tooltip-append-to-body="true" tooltip-placement="auto top" ng-click="$ctrl.log()" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-commenting-o" aria-hidden="true"></i>Log...</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>{{::$ctrl.getUserName()}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">

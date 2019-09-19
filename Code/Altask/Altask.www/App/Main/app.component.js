@@ -82,7 +82,15 @@ class AuthedController {
                 }
             }
         };
-
+        $(document).ready(function () {
+            $(document).click(function (event) {
+                var clickover = $(event.target);
+                var _opened = $(".navbar-collapse").hasClass("in") && $(".navbar-collapse").hasClass("navbar-collapse");
+                if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+                    $("button.navbar-toggle").click();
+                }
+            });
+        });
         $(document).on("change", ".add-new-task-asset", onAddNewTaskAsset);
 
         $(document).on("click", ".remove-new-task-asset", (e) => {
@@ -278,20 +286,20 @@ class AuthedController {
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label" style="margin-top: 7px;">Date:</label>
-                <div class="col-sm-4">
+                <label class="col-sm-3  col-xs-12 control-label" style="margin-top: 7px;">Date:</label>
+                <div class="col-xs-4">
                     <datepicker model="$ctrl.newTask.date" format="MM/dd/yyyy" style="margin-top: 7px;"></datepicker>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-xs-4">
                     <div uib-timepicker ng-model="$ctrl.newTask.date" hour-step="1" minute-step="1" show-meridian="true" style="margin-top: -15px;"></div>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">As Early as:</label>
-                <div class="col-sm-4">
+                <label class="col-sm-3 col-xs-12 control-label">As Early as:</label>
+                <div class="col-xs-4">
                      <input type="number" class="form-control" width="100" min="1" max="12" ng-model="$ctrl.newTask.asEarlyAsN" />
                 </div>
-                <div class="col-sm-4" style="padding-left: 0px; padding-right: 30px;">
+                <div class="col-xs-4" style="padding-left: 0px; padding-right: 30px;">
                     <select id="frequency" ng-model="$ctrl.newTask.asEarlyAsFrequency" class="form-control">
                         <option value="">Not Specified</option>
                         <option value="Minute(s)">Minute(s)</option>
@@ -301,7 +309,7 @@ class AuthedController {
                         <option value="Month(s)">Month(s)</option>
                     </select>
                 </div>
-                <div class="col-sm-1" style="padding-top: 6px; padding-left: 0px; margin-left: -16px;">
+                <div class="col-xs-1" style="padding-top: 6px; padding-left: 0px; margin-left: -16px;">
                     Before
                 </div>
             </div>
@@ -359,11 +367,11 @@ class AuthedController {
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">Idle Timeout:</label>
-                <div class="col-sm-4">
+                <label class="col-sm-3 col-xs-12 control-label">Idle Timeout:</label>
+                <div class="col-xs-4">
                      <input type="number" class="form-control" width="100" min="1" max="60" ng-model="$ctrl.newTask.idleTimeout" />
                 </div>
-                <div class="col-sm-1" style="padding-top: 6px; padding-left: 8px; margin-left: -16px;">
+                <div class="col-xs-1" style="padding-top: 6px; padding-left: 8px; margin-left: -16px;">
                     minute(s)
                 </div>
             </div>

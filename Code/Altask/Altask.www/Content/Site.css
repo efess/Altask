@@ -18,7 +18,7 @@ input[type=checkbox], input[type=radio] {
     margin-left: -26px;
 }
 
-    .uib-tab.active > div > uib-tab-heading > span {
+.uib-tab.active > div > uib-tab-heading > span {
     color: #0d87e9 !important;
 }
 
@@ -40,47 +40,147 @@ input[type=checkbox], input[type=radio] {
     width: 100% !important;
 }
 
-    .dataTables_scrollHeadInner table {
-        width: 100% !important;
-    }
+.dataTables_scrollHeadInner table {
+    width: 100% !important;
+}
 
 .options-row-btn {
     width: 36px;
 }
 
-    .options-row-btn i {
-        margin-left: -4px !important;
-        margin-top: -3px !important;
-    }
+.options-row-btn i {
+    margin-left: -4px !important;
+    margin-top: -3px !important;
+}
+
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+}
 
 .form-builder-save-box {
     padding-top: 10px;
 }
+
+.home-view {
+    height: calc(100vh - 65px);
+    display: flex;
+}
+
+/* desktop */
 @media (min-width: 992px) {
     #alerts {
+        padding-bottom: 15px;
         padding-right: 0;
     }
-}
-@media (max-width: 991px) {
-    .alert-list {
-        max-height: 200px;
+    #tasks { 
+        padding-bottom: 15px; 
+        padding-left: 15px;
+    }
+    .home-view {
+        flex-direction: row;
     }
 }
+
+/* mobile/tab */
 @media (max-width: 991px) {
     .main-view .container-fluid {
         padding: 0;
         margin: 0;
     }
+
     .main-view .row {
         margin: 0;
     }
-    .main-view .col-sm-12 {
+
+    .home-view {
+        flex-direction: column;
+    }
+    #tasks {
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+    #tasks .well {
+        margin-bottom: 0 !important;
+    }
+    #alerts {
+        padding-bottom: 0px;
+    }
+    #alerts, #tasks {
         padding-left: 0;
         padding-right: 0;
     }
+
 }
+
+.home-view #tasks {
+    height: 100%;
+}
+.home-view #alerts {
+    position: relative;
+    overflow:hidden;
+}
+
+.home-view #alerts .well {
+    height: 100%;
+}
+
+.expander {
+    position: absolute;
+    margin-top: auto;
+}
+
 #toggle-legend {
     margin-left: auto;
+}
+
+/* Toggle expander */
+
+#alerts .expand-toggle-button {
+    position: absolute;
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    #alerts .expand-toggle-button {
+        top: 50%;
+        right: 2px;
+    }
+    #alerts .expand-toggle-button .mobile {
+        display: none;
+    }
+    #alerts {
+        min-width: 30%;
+        transition: all 400ms ease;
+    }
+    #alerts.collapsed {
+        min-width: 18px; 
+        max-width: 18px;
+        transition: all 400msease;
+    }
+}
+
+@media (max-width: 991px) {
+    #alerts .expand-toggle-button {
+        left: 50%;
+        bottom: -2px;
+    }
+
+    #alerts .expand-toggle-button .desktop {
+        display: none;
+    }
+    #alerts {
+        min-height: 250px;
+        max-height: 250px;
+        transition: all 400ms ease;
+    }
+
+    #alerts.collapsed {
+        min-height: 18px;
+        max-height: 18px;
+        transition: all 400ms ease;
+    }
 }
 
 .tab-dd-toggle .caret {
@@ -94,6 +194,9 @@ Joe - Remove for responsive fix
     min-width: 150px;
 }*/
 
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    max-height: 600px !important;
+}
 
 /*
 Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since there's so much in there.
@@ -144,16 +247,20 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     }
 }
 
-    .multiselect-parent,
-    [ng-dropdown-multiselect] button {
-        width: 100%;
-        text-align: left;
-    }
+.dataTables_wrapper {  
+    overflow-x: scroll;
+}
 
-        [ng-dropdown-multiselect] button .caret {
-            float: right;
-            margin-top: 9px;
-        }
+.multiselect-parent,
+[ng-dropdown-multiselect] button {
+    width: 100%;
+    text-align: left;
+}
+
+    [ng-dropdown-multiselect] button .caret {
+        float: right;
+        margin-top: 9px;
+    }
 
 .dropdown-menu li a {
     cursor: pointer;
@@ -171,11 +278,11 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     font-size: 12px !important;
 }
 
-    .dropdown-multiselect .glyphicon::before {
-        margin-top: -17px;
-        position: absolute;
-        margin-left: -11px;
-    }
+.dropdown-multiselect .glyphicon::before {
+    margin-top: -17px;
+    position: absolute;
+    margin-left: -11px;
+}
 
 .dropdown-multiselect .dropdown-menu .divider {
     display: none !important;
@@ -190,16 +297,16 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     padding: 4px;
 }
 
-    .evt-action-btn i:hover {
-        border: solid 1px #cccccc;
-        background-color: #dddddd;
-        border-radius: 4px;
-    }
+.evt-action-btn i:hover {
+    border: solid 1px #cccccc;
+    background-color: #dddddd;
+    border-radius: 4px;
+}
 
-    .evt-action-btn i:active,
-    .evt-action-btn i:focus {
-        background-color: #cccccc;
-    }
+.evt-action-btn i:active,
+.evt-action-btn i:focus {
+    background-color: #cccccc;
+}
 
 .evt-container tr:first-child td:last-child {
     width: 10px;
@@ -236,19 +343,19 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     z-index: 1;
 }
 
-    .evt-actions-popover i {
-        position: relative;
-        top: calc((100%/2) - 15px);
-    }
+.evt-actions-popover i {
+    position: relative;
+    top: calc((100%/2) - 15px);
+}
 
-    .evt-actions-popover .fa {
-        font-size: 28px !important;
-        margin-left: 2px;
-        margin-right: 2px;
-        margin-top: -4px;
-        min-height: 28px;
-        min-width: 28px;
-    }
+.evt-actions-popover .fa {
+    font-size: 28px !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: -4px;
+    min-height: 28px;
+    min-width: 28px;
+}
 
 .evt-toggle-actions {
     background-color: #F5F5F5 !important;
@@ -263,13 +370,13 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     z-index: 2;
 }
 
-    .evt-toggle-actions:hover {
-        background-color: #e4e0e0 !important;
-    }
+.evt-toggle-actions:hover {
+    background-color: #e4e0e0 !important;
+}
 
-    .evt-toggle-actions:active {
-        background-color: #dcd7d7 !important;
-    }
+.evt-toggle-actions:active {
+    background-color: #dcd7d7 !important;
+}
 
 .evt-toggle-actions-icon-right:before {
     font-family: FontAwesome;
@@ -330,38 +437,38 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
 .home-alert-details-view {
 }
 
-    .home-alert-details-view::before {
-        background-color: #F5F5F5;
-        border-right: 1px solid #e6e6e6;
-        content: ' ';
-        height: calc(100% + 121px);
-        position: absolute;
-        top: -56px;
-        width: 10px;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-        left: 0px;
-    }
+.home-alert-details-view::before {
+    background-color: #F5F5F5;
+    border-right: 1px solid #e6e6e6;
+    content: ' ';
+    height: calc(100% + 121px);
+    position: absolute;
+    top: -56px;
+    width: 10px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    left: 0px;
+}
 
-    .home-alert-details-view.alert-assigned::before {
-        background-color: #F0AD4E;
-    }
+.home-alert-details-view.alert-assigned::before {
+    background-color: #F0AD4E;
+}
 
-    .home-alert-details-view.alert-in-progress::before {
-        background: repeating-linear-gradient( 135deg, #5CB85C, #5CB85C 10px, #fff 10px, #fff 20px );
-    }
+.home-alert-details-view.alert-in-progress::before {
+    background: repeating-linear-gradient( 135deg, #5CB85C, #5CB85C 10px, #fff 10px, #fff 20px );
+}
 
-    .home-alert-details-view.alert-completed::before {
-        background-color: #5CB85C;
-    }
+.home-alert-details-view.alert-completed::before {
+    background-color: #5CB85C;
+}
 
-    .home-alert-details-view.alert-pending::before {
-        background-color: #D9534F;
-    }
+.home-alert-details-view.alert-pending::before {
+    background-color: #D9534F;
+}
 
-    .home-alert-details-view.alert-not-complete::before {
-        background-color: #f3de3a;
-    }
+.home-alert-details-view.alert-not-complete::before {
+    background-color: #f3de3a;
+}
 
 .alert-list {
     background-color: #FFFFFF;
@@ -371,69 +478,69 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     border: solid 1px #CCCCCC;
 }
 
-    .alert-list .alert-container {
-        border-bottom: solid 1px #CCCCCC;
-        border-right: solid 1px #cccccc;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        width: 100%;
-        padding-bottom: 5px;
-        position: relative;
-        overflow: hidden;
-        padding-right: 10px;
-        min-height: 35px;
-        min-width: 100px;
-    }
+.alert-list .alert-container {
+    border-bottom: solid 1px #CCCCCC;
+    border-right: solid 1px #cccccc;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    width: 100%;
+    padding-bottom: 5px;
+    position: relative;
+    overflow: hidden;
+    padding-right: 10px;
+    min-height: 35px;
+    min-width: 100px;
+}
 
-    .alert-list .alert-selected {
-        background-color: #c0eef6;
-    }
+.alert-list .alert-selected {
+    background-color: #c0eef6;
+}
 
-    .alert-list .alert-container::before {
-        content: ' ';
-        height: 100%;
-        position: absolute;
-        top: 0;
-        width: 10px;
-    }
+.alert-list .alert-container::before {
+    content: ' ';
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 10px;
+}
 
-    .alert-list .alert-container.alert-assigned::before {
-        background-color: #F0AD4E;
-    }
+.alert-list .alert-container.alert-assigned::before {
+    background-color: #F0AD4E;
+}
 
-    .alert-list .alert-container.alert-in-progress::before {
-        background: repeating-linear-gradient( 135deg, #5CB85C, #5CB85C 10px, #fff 10px, #fff 20px );
-    }
+.alert-list .alert-container.alert-in-progress::before {
+    background: repeating-linear-gradient( 135deg, #5CB85C, #5CB85C 10px, #fff 10px, #fff 20px );
+}
 
-    .alert-list .alert-container.alert-completed::before {
-        background-color: #5CB85C;
-    }
+.alert-list .alert-container.alert-completed::before {
+    background-color: #5CB85C;
+}
 
-    .alert-list .alert-container.alert-pending::before {
-        background-color: #D9534F;
-    }
+.alert-list .alert-container.alert-pending::before {
+    background-color: #D9534F;
+}
 
-    .alert-list .alert-container.alert-not-complete::before {
-        background-color: #f3de3a;
-    }
+.alert-list .alert-container.alert-not-complete::before {
+    background-color: #f3de3a;
+}
 
-    .alert-list .alert-container > .alert-sub-elem {
-        font-size: 12px;
-        color: #777;
-        padding: 0 15px 0 25px !important;
-    }
+.alert-list .alert-container > .alert-sub-elem {
+    font-size: 12px;
+    color: #777;
+    padding: 0 15px 0 25px !important;
+}
 
-    .alert-list .alert-container .alert-title {
-        color: #575656;
-        padding-left: 15px;
-        padding-right: 5px;
-    }
+.alert-list .alert-container .alert-title {
+    color: #575656;
+    padding-left: 15px;
+    padding-right: 5px;
+}
 
-    .alert-list .alert-container .alert-action {
-        font-size: 12px;
-        vertical-align: top !important;
-        padding-top: 6px;
-    }
+.alert-list .alert-container .alert-action {
+    font-size: 12px;
+    vertical-align: top !important;
+    padding-top: 6px;
+}
 
 
 
@@ -441,42 +548,42 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
 .home-task-details-view {
 }
 
-    .home-task-details-view::before {
-        background-color: #F5F5F5 !important;
-        border-right: 1px solid #e6e6e6;
-        content: ' ';
-        height: calc(100% + 121px);
-        position: absolute;
-        top: -56px;
-        width: 10px;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-        left: 0px;
-    }
+.home-task-details-view::before {
+    background-color: #F5F5F5 !important;
+    border-right: 1px solid #e6e6e6;
+    content: ' ';
+    height: calc(100% + 121px);
+    position: absolute;
+    top: -56px;
+    width: 10px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    left: 0px;
+}
 
-    .home-task-details-view.event-complete::before {
-        background-color: #5CB85C !important;
-    }
+.home-task-details-view.event-complete::before {
+    background-color: #5CB85C !important;
+}
 
-    .home-task-details-view.event-in-progress::before {
-        background: repeating-linear-gradient( 135deg, #5CB85C, #5CB85C 10px, #fff 10px, #fff 20px );
-    }
+.home-task-details-view.event-in-progress::before {
+    background: repeating-linear-gradient( 135deg, #5CB85C, #5CB85C 10px, #fff 10px, #fff 20px );
+}
 
-    .home-task-details-view.event-past-due::before {
-        background-color: #D9534F !important;
-    }
+.home-task-details-view.event-past-due::before {
+    background-color: #D9534F !important;
+}
 
-    .home-task-details-view.event-within-30::before {
-        background-color: #F0AD4E !important;
-    }
+.home-task-details-view.event-within-30::before {
+    background-color: #F0AD4E !important;
+}
 
-    .home-task-details-view.event-within-hour::before {
-        background-color: #5BC0DE !important;
-    }
+.home-task-details-view.event-within-hour::before {
+    background-color: #5BC0DE !important;
+}
 
-    .home-task-details-view.event-due-today::before {
-        background-color: #337AB7 !important;
-    }
+.home-task-details-view.event-due-today::before {
+    background-color: #337AB7 !important;
+}
 
 .services-panel .btn-refresh-all {
     margin-bottom: 8px;
@@ -653,14 +760,15 @@ Joe - WO1 - Responsive fix - forcing collapse of toolbar on screens > 1200 since
     flex-grow: 1;
 }
 
-.filter-toolbar .form-group {
-    margin-bottom: 0;
-}
+    .filter-toolbar .form-group {
+        margin-bottom: 0;
+    }
 
-.filter-toolbar .checkbox {
-    margin-top: 5px;
-    margin-bottom: 8px;
-}
+    .filter-toolbar .checkbox {
+        margin-top: 5px;
+        margin-bottom: 8px;
+    }
+
 .filter-toolbar, .options-toolbar {
     margin-top: -15px;
     padding: 8px;
@@ -1998,14 +2106,14 @@ NOTE: use percentage font sizes or else old IE chokes
     justify-content: space-between;
 }
 
-.fc-toolbar.fc-footer-toolbar {
-    margin-top: 1em;
-}
+    .fc-toolbar.fc-footer-toolbar {
+        margin-top: 1em;
+    }
 
     .fc-toolbar .fc-left {
         /* Joe - changed to flexbox. */
         /*float: left;*/
-        align-self:flex-start;
+        align-self: flex-start;
     }
 
     .fc-toolbar .fc-right {

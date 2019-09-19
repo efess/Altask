@@ -237,6 +237,13 @@ class HomeController {
         setTimeout(() => $(window).trigger("resize"), 1)
     }
 
+    toggleAlert() {
+        this.settings.alerts.collapsed = !this.settings.alerts.collapsed
+        this.saveSettings();
+        const timerId = setInterval(() => $(window).trigger("resize"), 50)
+        setTimeout(() => clearInterval(timerId), 400)// wait 400 ms for animation to complete.
+    }
+
     calendar() {
         let index = this.settings.selectedTab;
         let entry = this.calendars.find((elem) => { return elem.id === index; });
@@ -288,7 +295,7 @@ class HomeController {
                 //            this.settings.activeTab().showLegend = !this.settings.activeTab().showLegend;
                 //            this.saveSettings();
                 //            setTimeout(() => $(window).trigger("resize"), 1)
-                            
+
                 //        }
                 //    }
                 //},
@@ -756,28 +763,25 @@ class HomeController {
 
             $(window).on("resize", () => {
                 const $calTabs = $("#cal_tabs")
+                const $activeTab = $('.tab-pane.active', $calTabs)
+                const tab = this.settings.activeTab();
                 const containerHeight = $calTabs.height()
-                const tabsHeight = $(".nav.nav-tabs", $calTabs).outerHeight(true)
-                const $activeTab = $(".tab-pane.active")
-                var offset = 0;
-                const calendar = this.calendar()
-                const children = $activeTab.children()
 
-                for (var i = 0; i < children.length; i++) {
-                    if (children[i] !== calendar.get(0)) {
-                        offset += $(children[i]).outerHeight(true)
+                const takeUpSpace = [
+                    $('.nav.nav-tabs', $calTabs),
+                    $('.filter-options-container', $activeTab)
+                ]
+
+                var offset = tab.showLegend ? 50 : 0
+                takeUpSpace.forEach(el => {
+                    if (el && el.length) {
+                        offset += el.outerHeight(false)
                     }
-                }
-                //if (tab.showFilter && tab.showLegend) {
-                //    offset = 150;
-                //} else if (tab.showFilter && !tab.showLegend || !tab.showFilter && tab.showLegend) {
-                //    offset = 96;
-                //} else {
-                //    offset = 46;
-                //}
+                })
 
-                //calendar.fullCalendar('option', 'height', containerHeight - tabsHeight - offset);
-                //$('.alert-list').height($('.alert-list').parent().height() - 85);
+                const calendar = this.calendar()
+                calendar.fullCalendar('option', 'height', containerHeight - offset);
+                $('.alert-list').height($('.alert-list').parent().height() - 86);
             });
 
             $(document).on("mouseleave", ".evt-container, .alert-container", function () {
