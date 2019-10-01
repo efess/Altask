@@ -61,13 +61,13 @@
             </div>
             <div class="alert-list">
                 <div class="alert-wrapper" ng-repeat="x in $ctrl.alerts | filter:{visible:true} track by x.Id">
-                    <div class="alert-container {{ x.className }}" ng-class="{'alert-selected': x.selected }">
+                    <div class="alert-container {{ x.className }}" ng-class="{'alert-selected': x.selected }"  ng-click="$ctrl.toggleActions($event)">
                         <table>
                             <tr>
                                 <td class="alert-title">{{ x.Description }}</td>
                             </tr>
                         </table>
-                        <span uib-tooltip="Show/Hide Alert Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions" ng-click="$ctrl.toggleActions($event)">
+                        <span uib-tooltip="Show/Hide Alert Actions..." tooltip-append-to-body="true" tooltip-placement="auto right-top" class="evt-toggle-actions">
                             <span class="evt-toggle-actions-icon-left"></span>
                         </span>
                         <div class="evt-actions-popover evt-hide" style="height: calc(100% + 2px) !important;">
