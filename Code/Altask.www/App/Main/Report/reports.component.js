@@ -16,14 +16,25 @@ class ReportsController {
 		this.working = "";
 		this.errors = [];
 		this.modalErrors = [];
+		this.reportInputs = [];
+		this.parameters = [];
 		this.reports = [
 			{ name: "ReportComplaints", description: "Complaints", parameters: [] },
 			{ name: "ReportNotes", description: "Notes", parameters: [] },
 			{ name: "ReportLastNTaskCompletions", description: "Completed Tasks (Last 5)", parameters: [] },
 			{ name: "ReportFormChanges", description: "Form Changes", parameters: [] },
+			{ name: "ReportPastDueTasks", description: "Past Due Tasks", parameters: ["today"], inputs: ["dateRange"] }
 		];
 		this.selected = this.reports[0].name;
 		this.showResults = false;
+	}
+	reportChanged() {
+		var report = this.reports.find((elem) => {
+			return elem.name === this.selected;
+		});
+
+		this.reportInputs = (report && report.inputs) || []
+		this.parameters = (report && report.parameters) || []
 	}
 
 	isModalValid() {
@@ -52,7 +63,7 @@ class ReportsController {
 		});
 
 		this.working = "Running Report...";
-		this.ReportService.runReport(report.name, report.parameters)
+		this.ReportService.runReport(report.name, this.parameters)
 			.then((response) => {
 				var columns = [];
 				var data = [];
