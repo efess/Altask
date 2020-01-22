@@ -1998,7 +1998,7 @@ class HomeController {
                     <input disabled class="form-control" ng-model="$ctrl.taskDetails.StoppedOn" />
                 </div>
             </div>` : ``) + (this.taskDetails.ResumedBy !== "n/a" ? `
-            <div class="form-group">
+            <div class="form-group"> 
                 <label class="control-label col-sm-3">Resumed By:</label>
                 <div class="col-sm-9">
                     <input disabled class="form-control" ng-model="$ctrl.taskDetails.ResumedBy" />

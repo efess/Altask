@@ -6,7 +6,7 @@ namespace Altask.www {
 		public ApplicationDbContext(string user)
 			: base(user, "Name=Default") {
 
-			this.Database.Log = l => Debug.Print(l);
+			//this.Database.Log = l => Debug.Print(l);
 		}
 
 		public static ApplicationDbContext Create() {

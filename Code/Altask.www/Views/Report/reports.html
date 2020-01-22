@@ -10,7 +10,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-6">
-                                <select class="form-control col-sm-5" ng-model="$ctrl.selected" ng-options="report.name as report.description for report in $ctrl.reports"></select>
+                                <select class="form-control col-sm-5" ng-change="$ctrl.reportChanged()" ng-model="$ctrl.selected" ng-options="report.name as report.description for report in $ctrl.reports"></select>
                             </div>
                             <div class="col-sm-2">
                                 <button type="button" class="btn btn-primary" ng-click="$ctrl.runReport()">Run Report</button>
@@ -21,13 +21,27 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-show="$ctrl.selected && $ctrl.selected.parameters.length > 0">
+    <div class="row" ng-show="$ctrl.selected && $ctrl.reportInputs.length > 0">
         <div class="col-md-12">
             <div class="well">
                 <form class="form-horizontal">
                     <fieldset>
                         <legend>Parameters</legend>
-
+                        <div class="form-group">
+                            <div ng-repeat="input in $ctrl.reportInputs">
+                                <div ng-switch on="input">
+                                    <div class="col-md-3 col-sm-12" ng-switch-when="dateRange">
+                                        <select class="form-control col-sm-5" ng-model="$ctrl.parameters[$index]">
+                                            <option value="today">Today</option>
+                                            <option value="currentweek">This Week</option>
+                                            <option value="lastweek">Last Week</option>
+                                            <option value="currentmonth">This Month</option>
+                                            <option value="lastmonth">Last Month</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>

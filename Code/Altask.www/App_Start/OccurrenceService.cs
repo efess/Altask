@@ -15,11 +15,7 @@ using System.Data;
 namespace Altask.www {
     [ServiceDescription("Altask Occurrence Service")]
     public class OccurrenceService : Service<OccurrenceService>, IService {
-        private List<Task> _tasks;
-        private int _lastCount = 0;
         private DateTime _lastDate = DateTime.Now;
-
-
 
         public void Run() {
             while (!Terminated) {
@@ -33,36 +29,35 @@ namespace Altask.www {
                 try {
                     var instances = new List<TaskInstance>();
 
-                    using (_context = new ApplicationDbContext("OccurrenceService")) {
-                        var count = 0;
+                    using (var context = new ApplicationDbContext("OccurrenceService")) {
 
-                        using (var command = new SqlCommand("[dbo].[GetTaskOccurrenceCount]", _context.Database.Connection as SqlConnection)) {
-                            bool closeConnection = false;
+                        // Joe - Removing "count" check since it's not a very accurate way to determine
+                        // if work needs to be done.
+                        //using (var command = new SqlCommand("[dbo].[GetTaskOccurrenceCount]", _context.Database.Connection as SqlConnection)) {
+                        //    bool closeConnection = false;
 
-                            if (command.Connection.State != ConnectionState.Open) {
-                                command.Connection.Open();
-                                closeConnection = true;
-                            }
+                        //    if (command.Connection.State != ConnectionState.Open) {
+                        //        command.Connection.Open();
+                        //        closeConnection = true;
+                        //    }
 
-                            command.CommandTimeout = 300;
-                            command.CommandType = System.Data.CommandType.StoredProcedure;
-                            command.Parameters.Add(new SqlParameter("@LastDate", _lastDate));
-                            count = Convert.ToInt32(command.ExecuteScalar());
+                        //    command.CommandTimeout = 300;
+                        //    command.CommandType = System.Data.CommandType.StoredProcedure;
+                        //    command.Parameters.Add(new SqlParameter("@LastDate", _lastDate));
+                        //    var count = Convert.ToInt32(command.ExecuteScalar());
 
-                            if (closeConnection) {
-                                command.Connection.Close();
-                            }
-                        }
+                        //    if (closeConnection) {
+                        //        command.Connection.Close();
+                        //    }
+                        //}
 
-                        if (count != _lastCount) {
-                            _lastCount = count;
-                            _tasks = _context.Tasks.AsNoTracking().Where(t => t.Schedules.Any(s => s.Active))
-                                .Include(e => e.Alerts)
-                                .Include(e => e.Schedules)
-                                .ToList();
-                        }
+                        // Removing _tasks cache since it held a reference to (and mght have used) a dbcontext which was disposed.
+                        var tasks = context.Tasks.AsNoTracking().Where(t => t.Schedules.Any(s => s.Active))
+                            .Include(e => e.Alerts)
+                            .Include(e => e.Schedules)
+                            .ToList();
 
-                        foreach (var task in _tasks) {
+                        foreach (var task in tasks) {
                             if (task.Id == 20097)
                             {
                                 var s = "";

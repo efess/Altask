@@ -430,6 +430,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\TaskInstance.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AssetAlertListOptions.cs">
       <DependentUpon>EntityListOptions.tt</DependentUpon>
@@ -536,6 +537,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FormChangesReport.cs" />
+    <Compile Include="Reports\LastNTaskCompletionsReport.cs" />
+    <Compile Include="Reports\NotesReport.cs" />
+    <Compile Include="Reports\ComplaintsReport.cs" />
+    <Compile Include="Reports\IReport.cs" />
+    <Compile Include="Reports\PastDueTasksReport.cs" />
+    <Compile Include="Reports\ReportResults.cs" />
+    <Compile Include="Reports\StoredProcedureReport.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
