@@ -29,7 +29,7 @@ namespace Altask.www {
                 try {
                     var instances = new List<TaskInstance>();
 
-                    using (var context = new ApplicationDbContext("OccurrenceService")) {
+                    using (var _context = new ApplicationDbContext("OccurrenceService")) {
 
                         // Joe - Removing "count" check since it's not a very accurate way to determine
                         // if work needs to be done.
@@ -52,7 +52,7 @@ namespace Altask.www {
                         //}
 
                         // Removing _tasks cache since it held a reference to (and mght have used) a dbcontext which was disposed.
-                        var tasks = context.Tasks.AsNoTracking().Where(t => t.Schedules.Any(s => s.Active))
+                        var tasks = _context.Tasks.AsNoTracking().Where(t => t.Schedules.Any(s => s.Active))
                             .Include(e => e.Alerts)
                             .Include(e => e.Schedules)
                             .ToList();
