@@ -57,7 +57,7 @@ namespace Altask.www.Reports
             };
             var tasks = await Helper.TaskInstance.Create(context, options);
             var records = tasks
-                .Where(t => !t.Completed.HasValue || !t.Completed.Value)
+                .Where(t => !t.Completed.HasValue || !t.Completed.Value && t.Date < toDate && t.Date > range.Item1)
                 .Select(task => new
                 {
                     Task = task.Name,

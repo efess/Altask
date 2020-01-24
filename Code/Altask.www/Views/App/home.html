@@ -90,7 +90,7 @@
     <div id="tasks">
         <div class="well" style="height: 100%">
             <uib-tabset id="cal_tabs" active="$ctrl.settings.selectedTab" class="home-tab-set" style="height: 100%">
-                <uib-tab ng-repeat="x in $ctrl.settings.tabs track by x.id" select="$ctrl.selectTab($event, index)" style="height: 100%">
+                <uib-tab ng-repeat="x in $ctrl.settings.tabs track by x.id" select="$ctrl.selectTab($event, $index)" style="height: 100%">
                     <uib-tab-heading>
                         <span>{{x.caption}}</span>
                         <span ng-show="!$ctrl.settings.locked" class="dropdown-toggle tab-dd-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -29,7 +29,7 @@ namespace Altask.www {
                 try {
                     var instances = new List<TaskInstance>();
 
-                    using (var _context = new ApplicationDbContext("OccurrenceService")) {
+                    using (_context = new ApplicationDbContext("OccurrenceService")) {
 
                         // Joe - Removing "count" check since it's not a very accurate way to determine
                         // if work needs to be done.
@@ -83,7 +83,7 @@ namespace Altask.www {
                                                 foreach (var user in dtoSchedule.Users) {
                                                     var instance = TaskInstance.FromSchedule(task, date, schedule);
 
-                                                    if (!DoesOccurrenceExist(schedule.Id, asset.AssetId, user.UserId, date)) {
+                                                        if (!DoesOccurrenceExist(schedule.Id, asset.AssetId, user.UserId, date)) {
                                                         instance.AssetId = asset.AssetId;
                                                         instance.Asset = asset.Asset;
                                                         instance.UserId = user.UserId;
