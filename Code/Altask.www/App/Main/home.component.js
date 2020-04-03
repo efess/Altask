@@ -721,6 +721,7 @@ class HomeController {
         $(document).ready(() => {
             $("span.dropdown-toggle").on("click", (e) => {
                 e.stopPropagation();
+                e.preventDefault();
                 let $elem = $(e.currentTarget);
                 let $dropdown = $elem.next();
                 $dropdown.toggle();
